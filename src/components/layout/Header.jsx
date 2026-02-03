@@ -31,7 +31,7 @@ const Header = ({ scrollToOffer }) => {
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="md:hidden bg-[#111827] border-b border-white/10 p-4 flex flex-col gap-4 relative z-50">
-                    <button className="w-full text-left py-2 text-gray-300 hover:text-white font-medium">Login</button>
+                    <a href="https://app.afiliadodash.com.br/login" className="w-full text-left py-2 text-gray-300 hover:text-white font-medium block">Login</a>
                     <button onClick={() => { scrollToOffer(); setIsMobileMenuOpen(false) }} className="w-full py-3 rounded-lg bg-orange-600 text-white font-bold text-center">
                         Garantir vaga de Fundador
                     </button>
