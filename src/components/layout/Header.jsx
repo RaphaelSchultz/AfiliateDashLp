@@ -11,7 +11,7 @@ const Header = ({ scrollToOffer }) => {
                     <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
                         <BarChart3 size={20} />
                     </div>
-                    <span className="text-xl font-bold text-white tracking-tight">Afiliate<span className="text-orange-500">Dash</span></span>
+                    <span className="text-xl font-bold text-white tracking-tight">Afiliado<span className="text-orange-500">Dash</span></span>
                 </div>
 
                 <div className="hidden md:flex items-center gap-4">

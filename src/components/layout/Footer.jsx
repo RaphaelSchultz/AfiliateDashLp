@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="w-6 h-6 bg-orange-600 rounded flex items-center justify-center">
                     <BarChart3 className="text-white" size={14} />
                 </div>
-                <span className="text-lg font-bold text-white">Afiliate<span className="text-orange-500">Dash</span></span>
+                <span className="text-lg font-bold text-white">Afiliado<span className="text-orange-500">Dash</span></span>
             </div>
             <p className="text-gray-500 text-sm mb-8">
                 A ferramenta essencial para afiliados que jogam o jogo do longo prazo.
@@ -19,7 +19,7 @@ const Footer = () => {
                 <a href="#" className="hover:text-orange-500 transition-colors">Suporte</a>
             </div>
             <p className="text-gray-700 text-xs">
-                © {new Date().getFullYear()} Afiliate Dash SaaS. Todos os direitos reservados.
+                © {new Date().getFullYear()} Afiliado Dash SaaS. Todos os direitos reservados.
             </p>
         </footer>
     );
