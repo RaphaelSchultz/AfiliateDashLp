@@ -14,12 +14,12 @@ const FAQ = () => {
                 <div className="space-y-2">
                     {[
                         {
-                            q: "Como o Afiliate Dash difere do painel da Shopee?",
-                            a: "O painel da Shopee é básico e focado apenas em mostrar vendas. O Afiliate Dash é focado em gestão e performance. Nós mostramos métricas que eles não mostram (como latência de clique, ROI real, lucro líquido por SubID) e, o mais importante: guardamos seus dados para sempre, enquanto eles apagam após alguns meses."
+                            q: "Como o Afiliado Dash difere do painel da Shopee?",
+                            a: "O painel da Shopee é básico e focado apenas em mostrar vendas. O Afiliado Dash é focado em gestão e performance. Nós mostramos métricas que eles não mostram (como latência de clique, ROI real, lucro líquido por SubID) e, o mais importante: guardamos seus dados para sempre, enquanto eles apagam após alguns meses."
                         },
                         {
                             q: "Preciso instalar algo no meu computador?",
-                            a: "Não. O Afiliate Dash é 100% online (na nuvem). Você pode acessar de qualquer computador, tablet ou celular, de qualquer lugar do mundo."
+                            a: "Não. O Afiliado Dash é 100% online (na nuvem). Você pode acessar de qualquer computador, tablet ou celular, de qualquer lugar do mundo."
                         },
                         {
                             q: "Meus dados estão seguros?",

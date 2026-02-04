@@ -22,7 +22,7 @@ const DashboardPreview = () => (
                 <div className="w-9 h-9 bg-orange-600 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/20">
                     <BarChart3 size={20} className="text-white" />
                 </div>
-                <div className="text-white font-bold text-xl tracking-tight">Afiliate Dash</div>
+                <div className="text-white font-bold text-xl tracking-tight">Afiliado Dash</div>
             </div>
 
             <div className="space-y-4">
@@ -54,7 +54,7 @@ const DashboardPreview = () => (
                     <div className="w-9 h-9 bg-orange-600 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/20">
                         <BarChart3 size={20} className="text-white" />
                     </div>
-                    <div className="text-white font-bold text-xl tracking-tight">Afiliate Dash</div>
+                    <div className="text-white font-bold text-xl tracking-tight">Afiliado Dash</div>
                 </div>
                 <div className="flex items-center gap-4">
                     <div className="hidden md:flex h-9 bg-[#1f2937] border border-white/5 rounded px-4 text-xs text-gray-400 items-center gap-2">

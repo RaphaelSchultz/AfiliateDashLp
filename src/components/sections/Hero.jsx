@@ -23,7 +23,7 @@ const Hero = ({ scrollToOffer }) => {
                 </h1>
 
                 <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
-                    Deixe de lado o "feeling" e as planilhas manuais. O <strong className="text-gray-200 font-semibold">Afiliate Dash</strong> entrega rastreamento granular de SubIDs, análise de latência e ROI verdadeiro para afiliados profissionais.
+                    Deixe de lado o "feeling" e as planilhas manuais. O <strong className="text-gray-200 font-semibold">Afiliado Dash</strong> entrega rastreamento granular de SubIDs, análise de latência e ROI verdadeiro para afiliados profissionais.
                 </p>
 
                 <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-20">
