@@ -8,7 +8,7 @@ import Hero from './components/sections/Hero';
 const PainSection = lazy(() => import('./components/sections/PainSection'));
 const Features = lazy(() => import('./components/sections/Features'));
 const DeepDive = lazy(() => import('./components/sections/DeepDive'));
-const Offer = lazy(() => import('./components/sections/Offer'));
+const Pricing = lazy(() => import('./components/Pricing'));
 const FAQ = lazy(() => import('./components/sections/FAQ'));
 const Footer = lazy(() => import('./components/layout/Footer'));
 
@@ -30,10 +30,10 @@ export default function AfiliateDashLanding() {
   return (
     <div className="min-h-screen bg-[#0B1121] text-gray-300 font-sans selection:bg-orange-500/30 selection:text-orange-200 overflow-x-hidden">
 
-      {/* Background Ambience */}
+      {/* Background Ambience - Lighter */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[20%] w-[30%] h-[30%] bg-blue-900/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-orange-900/10 rounded-full blur-[120px]" />
+        <div className="absolute top-[-10%] left-[20%] w-[40%] h-[40%] bg-blue-900/5 rounded-full blur-[200px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-orange-900/5 rounded-full blur-[200px]" />
       </div>
 
       <Header scrollToOffer={scrollToOffer} />
@@ -45,7 +45,7 @@ export default function AfiliateDashLanding() {
           <PainSection />
           <Features />
           <DeepDive />
-          <Offer />
+          <Pricing />
           <FAQ />
           <Footer />
         </Suspense>
