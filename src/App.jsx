@@ -18,14 +18,16 @@ const LoadingData = () => (
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
-          <Route path="obrigado" element={<ThankYou />} />
-          <Route path="termos-de-uso" element={<TermsOfUse />} />
-          <Route path="politica-de-privacidade" element={<PrivacyPolicy />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<LoadingData />}>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="obrigado" element={<ThankYou />} />
+            <Route path="termos-de-uso" element={<TermsOfUse />} />
+            <Route path="politica-de-privacidade" element={<PrivacyPolicy />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
