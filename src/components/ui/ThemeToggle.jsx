@@ -8,21 +8,20 @@ const ThemeToggle = () => {
     return (
         <button
             onClick={toggleTheme}
-            className="relative h-7 w-14 rounded-full bg-neutral-100 dark:bg-slate-800 border border-neutral-200 dark:border-slate-700 p-1 flex items-center justify-between cursor-pointer focus:outline-none transition-colors duration-300"
+            className="relative h-6 w-12 rounded-full bg-neutral-100 dark:bg-slate-800 border border-neutral-200 dark:border-slate-700 flex items-center cursor-pointer focus:outline-none transition-colors duration-300"
             aria-label="Toggle Dark Mode"
         >
             {/* Sliding Indicator */}
             <div
-                className={`absolute top-0.5 bottom-0.5 w-[22px] bg-white dark:bg-slate-600 rounded-full shadow-sm transform transition-transform duration-300 ease-in-out ${theme === 'dark' ? 'translate-x-7' : 'translate-x-0'
-                    }`}
+                className={`absolute top-[2px] left-[2px] w-[18px] h-[18px] bg-white dark:bg-slate-600 rounded-full shadow-sm transition-transform duration-300 ease-in-out ${theme === 'dark' ? 'translate-x-[22px]' : 'translate-x-0'}`}
             />
 
             {/* Icons */}
-            <div className={`z-10 flex items-center justify-center w-[22px] h-full transition-colors duration-300 ${theme === 'light' ? 'text-orange-500' : 'text-neutral-400'}`}>
-                <Sun size={12} fill={theme === 'light' ? "currentColor" : "none"} />
+            <div className={`z-10 flex items-center justify-center w-6 h-full transition-colors duration-300 ${theme === 'light' ? 'text-orange-500' : 'text-neutral-400'}`}>
+                <Sun size={10} fill={theme === 'light' ? "currentColor" : "none"} />
             </div>
-            <div className={`z-10 flex items-center justify-center w-[22px] h-full transition-colors duration-300 ${theme === 'dark' ? 'text-blue-400' : 'text-neutral-400'}`}>
-                <Moon size={12} fill={theme === 'dark' ? "currentColor" : "none"} />
+            <div className={`z-10 flex items-center justify-center w-6 h-full transition-colors duration-300 ${theme === 'dark' ? 'text-blue-400' : 'text-neutral-400'}`}>
+                <Moon size={10} fill={theme === 'dark' ? "currentColor" : "none"} />
             </div>
         </button>
     );
