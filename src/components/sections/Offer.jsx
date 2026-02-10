@@ -48,7 +48,7 @@ const Offer = () => {
                             ))}
                         </div>
 
-                        <PrimaryButton className="w-full text-lg py-5 mb-4 shadow-orange-glow" onClick={() => alert("Redirecionando para o Checkout...")}>
+                        <PrimaryButton className="w-full text-lg mb-4 shadow-orange-glow" onClick={() => alert("Redirecionando para o Checkout...")}>
                             Garantir meu acesso
                         </PrimaryButton>
 
