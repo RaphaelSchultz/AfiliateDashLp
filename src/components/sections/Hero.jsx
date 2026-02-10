@@ -9,8 +9,8 @@ const Hero = ({ scrollToOffer }) => {
         <section className="relative pt-32 pb-12 px-6 bg-neutral-cream dark:bg-slate-900 overflow-hidden transition-colors duration-300">
             {/* Background Decor */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-                <div className="absolute top-[-10%] right-[20%] w-[600px] h-[600px] bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl opacity-50 mix-blend-multiply filter" />
-                <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-secondary/10 dark:bg-secondary/20 rounded-full blur-3xl opacity-50 mix-blend-multiply filter" />
+                <div className="absolute top-[-10%] right-[20%] w-[600px] h-[600px] bg-primary/5 dark:bg-primary/10 rounded-full blur-2xl opacity-50" />
+                <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-secondary/10 dark:bg-secondary/20 rounded-full blur-2xl opacity-50" />
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
@@ -46,7 +46,7 @@ const Hero = ({ scrollToOffer }) => {
                 {/* Dashboard Preview - Centered and Large */}
                 <div id="dashboard-preview" className="w-full max-w-5xl relative perspective-1000 mx-auto">
                     {/* Decorative Elements behind image */}
-                    <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-gradient-radial from-orange-500/10 to-transparent blur-3xl pointer-events-none" />
+                    <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-gradient-to-b from-orange-500/10 to-transparent blur-2xl pointer-events-none" />
 
                     <div className="relative transform hover:scale-[1.01] transition-transform duration-700 ease-out">
                         <DashboardPreview />

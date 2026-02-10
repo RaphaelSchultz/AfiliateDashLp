@@ -6,7 +6,7 @@ const Offer = () => {
     return (
         <section id="oferta" className="py-24 px-6 relative bg-neutral-cream dark:bg-slate-900 transition-colors duration-300">
             {/* Glow Behind Offer - Warmer for Light Mode */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-gradient-to-r from-orange-200/40 via-red-200/40 to-orange-200/40 dark:from-orange-900/20 dark:via-red-900/20 dark:to-orange-900/20 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[600px] bg-gradient-to-r from-orange-200/40 via-red-200/40 to-orange-200/40 dark:from-orange-900/20 dark:via-red-900/20 dark:to-orange-900/20 blur-2xl rounded-full pointer-events-none" />
 
             <div className="max-w-lg mx-auto relative z-10">
                 <div className="relative transform hover:scale-[1.02] transition-transform duration-500">

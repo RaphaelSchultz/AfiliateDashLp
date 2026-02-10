@@ -54,7 +54,7 @@ const PainSection = () => {
 
                     {/* Visual de "Cegueira de Dados" - Adapted for Light Mode */}
                     <div className="relative">
-                        <div className="absolute inset-0 bg-red-500/5 dark:bg-red-500/10 blur-[80px] rounded-full" />
+                        <div className="absolute inset-0 bg-red-500/5 dark:bg-red-500/10 blur-2xl rounded-full" />
                         <div className="relative bg-white dark:bg-slate-800 border border-red-100 dark:border-red-900/30 rounded-2xl p-8 space-y-4 shadow-soft-xl opacity-90 grayscale hover:grayscale-0 transition-all duration-500">
                             <div className="flex items-center justify-between border-b border-red-50 dark:border-red-900/30 pb-4">
                                 <span className="text-red-500 dark:text-red-400 font-mono font-bold tracking-tight bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">⚠️ Status: CEGUEIRA DE DADOS</span>
