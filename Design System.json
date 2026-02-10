@@ -1,0 +1,692 @@
+{
+  "designSystem": {
+    "name": "MGM Dashboard Design System",
+    "version": "1.0",
+    "description": "Design system extracted from MGM Dashboard landing page - a warm, community-focused analytics platform with emphasis on approachability and data visualization"
+  },
+
+  "designPrinciples": {
+    "overall": "Warm minimalism with community focus. The design balances professional analytics with friendly, approachable aesthetics through warm colors, generous spacing, and conversational tone.",
+    "keywords": [
+      "warm",
+      "approachable",
+      "clean",
+      "community-focused",
+      "data-driven",
+      "friendly",
+      "professional yet casual"
+    ],
+    "avoid": [
+      "cold corporate feel",
+      "overly technical presentation",
+      "cluttered dashboards",
+      "aggressive or pushy design",
+      "sterile white backgrounds"
+    ],
+    "visualHierarchy": "Typography-first with bold mixed-weight headlines. Orange accent draws eye to CTAs and key metrics. Section rhythm created through alternating cream and white backgrounds."
+  },
+
+  "colorPalette": {
+    "primary": {
+      "orange": "#FF6B35",
+      "orangeHover": "#FF5722",
+      "description": "Vibrant orange - energetic, friendly, community-oriented. Primary CTA color and accent throughout."
+    },
+    "secondary": {
+      "teal": "#2DD4BF",
+      "tealLight": "#5EEAD4",
+      "description": "Modern teal/cyan - used for data visualization highlights and positive metrics"
+    },
+    "neutral": {
+      "cream": "#FDFBF7",
+      "warmBeige": "#F5F1E8",
+      "lightGray": "#F8F8F8",
+      "white": "#FFFFFF",
+      "mediumGray": "#9CA3AF",
+      "charcoal": "#1F2937",
+      "darkCharcoal": "#111827",
+      "black": "#0A0A0A",
+      "description": "Warm neutral palette with cream/beige tones instead of pure whites and grays"
+    },
+    "accent": {
+      "yellow": "#FDB022",
+      "yellowPale": "#FEF3C7",
+      "green": "#10B981",
+      "greenLight": "#D1FAE5",
+      "description": "Supporting colors for charts, highlights, and status indicators"
+    },
+    "usage": {
+      "backgrounds": {
+        "primary": "#FDFBF7 (warm cream)",
+        "alternate": "#FFFFFF (white sections for contrast)",
+        "cards": "#FFFFFF with subtle shadows",
+        "darkSections": "#1F2937 or #111827",
+        "pattern": "Alternate between cream and white for visual rhythm"
+      },
+      "text": {
+        "headings": "#0A0A0A or #111827",
+        "body": "#4B5563 or #6B7280",
+        "muted": "#9CA3AF",
+        "onDark": "#FFFFFF",
+        "accent": "#FF6B35 (orange for emphasis)"
+      },
+      "buttons": {
+        "primary": "#FF6B35 background with white text",
+        "secondary": "White or cream with #FF6B35 text and border",
+        "dark": "#111827 background with white text"
+      },
+      "borders": {
+        "default": "#E5E7EB",
+        "subtle": "#F3F4F6",
+        "emphasis": "#FF6B35"
+      }
+    }
+  },
+
+  "typography": {
+    "fontFamilies": {
+      "primary": {
+        "family": "Custom sans-serif (likely Inter, DM Sans, or Manrope)",
+        "weights": "400, 500, 600, 700, 800",
+        "description": "Modern geometric sans-serif with excellent readability at all sizes"
+      },
+      "fallback": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+    },
+    "typeScale": {
+      "hero": {
+        "size": "clamp(2.5rem, 6vw, 4.5rem)",
+        "weight": "700-800",
+        "lineHeight": "1.0-1.1",
+        "letterSpacing": "-0.03em",
+        "description": "Extra large display text for hero headlines"
+      },
+      "h1": {
+        "size": "clamp(2rem, 5vw, 3.5rem)",
+        "weight": "700",
+        "lineHeight": "1.1",
+        "letterSpacing": "-0.02em"
+      },
+      "h2": {
+        "size": "clamp(1.75rem, 4vw, 2.75rem)",
+        "weight": "700",
+        "lineHeight": "1.2",
+        "letterSpacing": "-0.015em"
+      },
+      "h3": {
+        "size": "clamp(1.25rem, 3vw, 1.75rem)",
+        "weight": "600-700",
+        "lineHeight": "1.3",
+        "letterSpacing": "-0.01em"
+      },
+      "h4": {
+        "size": "1.125rem",
+        "weight": "600",
+        "lineHeight": "1.4"
+      },
+      "bodyLarge": {
+        "size": "1.125rem",
+        "weight": "400",
+        "lineHeight": "1.7",
+        "color": "#6B7280"
+      },
+      "bodyBase": {
+        "size": "1rem",
+        "weight": "400",
+        "lineHeight": "1.6",
+        "color": "#4B5563"
+      },
+      "bodySmall": {
+        "size": "0.875rem",
+        "weight": "400",
+        "lineHeight": "1.5",
+        "color": "#6B7280"
+      },
+      "caption": {
+        "size": "0.75rem",
+        "weight": "500",
+        "lineHeight": "1.4",
+        "letterSpacing": "0.02em",
+        "color": "#9CA3AF"
+      }
+    },
+    "emphasis": {
+      "mixedWeights": "Headlines use mixed weights within the same line - lighter weight for most text, bold/extra-bold for key words",
+      "example": "'Inteligência de' (normal) 'comunidade,' (bold) 'simplificada.' (normal)",
+      "colorEmphasis": "Orange color (#FF6B35) used to highlight key phrases within body text"
+    },
+    "labels": {
+      "eyebrow": {
+        "size": "0.75rem-0.875rem",
+        "weight": "600",
+        "letterSpacing": "0.05em",
+        "textTransform": "uppercase",
+        "color": "#9CA3AF or #FF6B35"
+      },
+      "badge": {
+        "size": "0.75rem",
+        "weight": "600",
+        "letterSpacing": "0.03em",
+        "textTransform": "none or lowercase"
+      }
+    }
+  },
+
+  "spacing": {
+    "philosophy": "Generous breathing room with emphasis on vertical rhythm. Sections are spacious, cards have ample padding, and content never feels cramped.",
+    "scale": {
+      "xs": "0.25rem (4px)",
+      "sm": "0.5rem (8px)",
+      "md": "1rem (16px)",
+      "lg": "1.5rem (24px)",
+      "xl": "2rem (32px)",
+      "2xl": "3rem (48px)",
+      "3xl": "4rem (64px)",
+      "4xl": "6rem (96px)",
+      "5xl": "8rem (128px)"
+    },
+    "section": {
+      "paddingY": "clamp(4rem, 10vw, 8rem)",
+      "paddingX": "clamp(1.5rem, 5vw, 3rem)",
+      "description": "Sections have massive vertical padding for breathing room"
+    },
+    "container": {
+      "maxWidth": "1280px",
+      "padding": "0 1.5rem",
+      "description": "Content constrained to readable width with comfortable side padding"
+    },
+    "grid": {
+      "gap": "2rem-3rem",
+      "columnGap": "2rem",
+      "rowGap": "2rem-3rem",
+      "description": "Consistent generous gaps between grid items"
+    },
+    "cards": {
+      "padding": "2rem-3rem",
+      "gap": "1.5rem-2rem between cards",
+      "internalSpacing": "1rem-1.5rem between elements"
+    },
+    "contentFlow": {
+      "headingToBody": "1.5rem-2rem",
+      "bodyToCta": "2rem-3rem",
+      "sectionToSection": "0 (sections handle own padding)",
+      "elementToElement": "1rem-1.5rem"
+    }
+  },
+
+  "components": {
+    "buttons": {
+      "primary": {
+        "background": "#FF6B35",
+        "text": "#FFFFFF",
+        "borderRadius": "0.5rem (8px) - slightly rounded, not pill",
+        "padding": "1rem 2rem",
+        "fontSize": "1rem",
+        "fontWeight": "600",
+        "boxShadow": "0 2px 8px rgba(255, 107, 53, 0.2)",
+        "hover": {
+          "background": "#FF5722",
+          "transform": "translateY(-2px)",
+          "boxShadow": "0 4px 16px rgba(255, 107, 53, 0.3)"
+        },
+        "transition": "all 0.2s ease"
+      },
+      "secondary": {
+        "background": "transparent or #FFFFFF",
+        "text": "#FF6B35",
+        "border": "2px solid #FF6B35",
+        "borderRadius": "0.5rem",
+        "padding": "1rem 2rem",
+        "hover": {
+          "background": "#FFF5F2",
+          "borderColor": "#FF5722"
+        }
+      },
+      "dark": {
+        "background": "#111827",
+        "text": "#FFFFFF",
+        "borderRadius": "0.5rem",
+        "padding": "1rem 2rem",
+        "hover": {
+          "background": "#1F2937"
+        }
+      },
+      "icon": {
+        "position": "Often includes right arrow icon",
+        "iconColor": "Matches text color",
+        "iconSize": "1rem-1.25rem"
+      }
+    },
+    "cards": {
+      "default": {
+        "background": "#FFFFFF",
+        "borderRadius": "1rem (16px)",
+        "padding": "2rem-3rem",
+        "boxShadow": "0 2px 12px rgba(0, 0, 0, 0.06)",
+        "border": "1px solid #F3F4F6 or none",
+        "hover": {
+          "transform": "translateY(-4px)",
+          "boxShadow": "0 8px 24px rgba(0, 0, 0, 0.1)",
+          "transition": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "feature": {
+        "background": "#FFFFFF",
+        "borderRadius": "1rem",
+        "padding": "2.5rem",
+        "boxShadow": "0 1px 3px rgba(0, 0, 0, 0.04)",
+        "border": "1px solid #F3F4F6",
+        "iconContainer": {
+          "size": "3rem-3.5rem",
+          "background": "#FFF5F2 or #FEF3C7",
+          "borderRadius": "0.75rem",
+          "display": "flex centered",
+          "iconSize": "1.5rem-2rem",
+          "iconColor": "#FF6B35"
+        }
+      },
+      "dashboard": {
+        "background": "#FFFFFF",
+        "borderRadius": "1rem-1.5rem",
+        "padding": "1.5rem-2rem",
+        "boxShadow": "0 4px 20px rgba(0, 0, 0, 0.08)",
+        "border": "1px solid #E5E7EB",
+        "description": "Larger shadow for dashboard/screenshot cards to create elevation"
+      },
+      "testimonial": {
+        "background": "#FFF5F2 or #FDFBF7",
+        "borderRadius": "1rem",
+        "padding": "2rem",
+        "border": "none",
+        "boxShadow": "none or subtle"
+      }
+    },
+    "badges": {
+      "default": {
+        "background": "#FFF5F2",
+        "text": "#FF6B35",
+        "borderRadius": "0.5rem",
+        "padding": "0.5rem 1rem",
+        "fontSize": "0.875rem",
+        "fontWeight": "600"
+      },
+      "outlined": {
+        "background": "transparent",
+        "text": "#FF6B35",
+        "border": "1.5px solid #FF6B35",
+        "borderRadius": "9999px (pill)",
+        "padding": "0.375rem 1rem",
+        "fontSize": "0.75rem",
+        "fontWeight": "600",
+        "textTransform": "uppercase",
+        "letterSpacing": "0.05em"
+      },
+      "stat": {
+        "background": "#FDFBF7",
+        "borderRadius": "0.75rem",
+        "padding": "1.5rem",
+        "display": "flex-column",
+        "alignItems": "center"
+      }
+    },
+    "inputs": {
+      "default": {
+        "background": "#FFFFFF",
+        "border": "1px solid #E5E7EB",
+        "borderRadius": "0.5rem",
+        "padding": "1rem 1.25rem",
+        "fontSize": "1rem",
+        "focus": {
+          "borderColor": "#FF6B35",
+          "boxShadow": "0 0 0 3px rgba(255, 107, 53, 0.1)",
+          "outline": "none"
+        }
+      }
+    },
+    "dividers": {
+      "default": {
+        "color": "#E5E7EB",
+        "width": "1px or full width",
+        "style": "solid"
+      },
+      "subtle": {
+        "color": "#F3F4F6",
+        "opacity": "0.5-0.7"
+      }
+    },
+    "icons": {
+      "style": "Line icons, likely Lucide or Heroicons",
+      "strokeWidth": "1.5-2",
+      "sizes": {
+        "small": "1rem (16px)",
+        "medium": "1.25rem (20px)",
+        "large": "1.5rem (24px)",
+        "xlarge": "2rem (32px)",
+        "feature": "2.5rem (40px) inside containers"
+      },
+      "colors": {
+        "default": "#6B7280",
+        "primary": "#FF6B35",
+        "success": "#10B981"
+      }
+    },
+    "logos": {
+      "partnerLogos": {
+        "style": "Grayscale or desaturated",
+        "opacity": "0.4-0.6",
+        "height": "32px-40px",
+        "spacing": "2rem-3rem between logos",
+        "hover": {
+          "opacity": "0.8-1.0",
+          "filter": "none (restore color)"
+        }
+      }
+    }
+  },
+
+  "effects": {
+    "shadows": {
+      "xs": "0 1px 2px rgba(0, 0, 0, 0.04)",
+      "sm": "0 2px 8px rgba(0, 0, 0, 0.06)",
+      "md": "0 4px 12px rgba(0, 0, 0, 0.08)",
+      "lg": "0 8px 24px rgba(0, 0, 0, 0.1)",
+      "xl": "0 12px 36px rgba(0, 0, 0, 0.12)",
+      "2xl": "0 20px 48px rgba(0, 0, 0, 0.15)",
+      "colored": "0 4px 16px rgba(255, 107, 53, 0.2) for orange buttons"
+    },
+    "gradients": {
+      "warmBackground": "Subtle radial gradient: radial-gradient(ellipse at top, #FDFBF7 0%, #FFF8F0 50%, #FDFBF7 100%)",
+      "orangeGlow": "radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%)",
+      "chartGradient": "linear-gradient(180deg, #2DD4BF 0%, rgba(45, 212, 191, 0.1) 100%)"
+    },
+    "transitions": {
+      "default": "all 0.2s ease",
+      "smooth": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+      "spring": "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)"
+    },
+    "hover": {
+      "lift": "translateY(-4px)",
+      "liftSubtle": "translateY(-2px)",
+      "scale": "scale(1.02)",
+      "glow": "box-shadow increase + possible color shift"
+    },
+    "animations": {
+      "fadeIn": {
+        "from": "opacity: 0",
+        "to": "opacity: 1",
+        "duration": "0.4s-0.6s"
+      },
+      "slideUp": {
+        "from": "opacity: 0, translateY(20px)",
+        "to": "opacity: 1, translateY(0)",
+        "duration": "0.6s",
+        "easing": "cubic-bezier(0.4, 0, 0.2, 1)"
+      },
+      "stagger": {
+        "delay": "0.1s-0.15s between items",
+        "use": "For card grids, list items, feature sections"
+      }
+    }
+  },
+
+  "layout": {
+    "philosophy": "Asymmetric layouts with strong visual hierarchy. Content-image splits often favor text (60/40), creating more engaging compositions than strict 50/50.",
+    "grid": {
+      "system": "12-column grid",
+      "gutter": "2rem-3rem",
+      "breakpoints": {
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px",
+        "2xl": "1536px"
+      }
+    },
+    "hero": {
+      "layout": "Asymmetric two-column: 55-60% text / 40-45% visual",
+      "alignment": "Vertically centered",
+      "textMaxWidth": "600px for readability",
+      "imageStyle": "Dashboard mockup or screenshot at slight angle with elevated shadow",
+      "mobileStack": "Text on top, image below"
+    },
+    "sections": {
+      "rhythm": "Alternate between cream (#FDFBF7) and white (#FFFFFF) backgrounds",
+      "structure": "Eyebrow label → Headline → Description → Content/Cards",
+      "width": "Full-width sections with centered max-width container"
+    },
+    "contentSplit": {
+      "twoColumn": "60/40 or 50/50 splits common",
+      "alignment": "Vertically centered or top-aligned depending on content",
+      "reverseOnMobile": "Stack vertically, image often moves below text"
+    },
+    "cardGrids": {
+      "desktop": "3 columns (33.33% each)",
+      "tablet": "2 columns (50% each)",
+      "mobile": "1 column (100%)",
+      "alignment": "Top-aligned for equal-height appearance"
+    }
+  },
+
+  "patterns": {
+    "sectionStructure": {
+      "standard": [
+        "Section eyebrow/label (optional)",
+        "Large headline with mixed weights",
+        "Supporting description text",
+        "Content (cards, images, CTAs)"
+      ],
+      "spacing": "2rem-3rem between each element"
+    },
+    "trustSignals": {
+      "placement": "Near CTAs, in dedicated sections, footer",
+      "elements": [
+        "Partner logos (grayscale)",
+        "Large statistics/numbers with labels",
+        "Testimonial cards",
+        "Badge indicators (certifications, awards)"
+      ],
+      "style": "Subtle, never overwhelming"
+    },
+    "stats": {
+      "numberStyle": {
+        "size": "clamp(2.5rem, 5vw, 4rem)",
+        "weight": "700-800",
+        "color": "#FF6B35",
+        "letterSpacing": "-0.02em"
+      },
+      "labelStyle": {
+        "size": "0.875rem-1rem",
+        "weight": "400",
+        "color": "#6B7280",
+        "position": "Below number"
+      },
+      "layout": "Centered in cards or inline with content"
+    },
+    "dataVisualization": {
+      "charts": {
+        "primaryColor": "#FF6B35",
+        "secondaryColor": "#2DD4BF",
+        "tertiaryColor": "#FDB022",
+        "gridColor": "#F3F4F6",
+        "textColor": "#6B7280",
+        "style": "Clean, minimal, generous padding"
+      },
+      "graphs": {
+        "lineStyle": "Smooth curves, 2-3px stroke",
+        "fillGradient": "Subtle gradient from color to transparent",
+        "gridLines": "Subtle, not distracting"
+      }
+    },
+    "imagery": {
+      "style": "Screenshot-style UI mockups, dashboard previews, data visualizations",
+      "treatment": "Slight perspective tilt (3-5 degrees), elevated shadows, sharp and clean",
+      "colorGrading": "Warm, slightly saturated, matches brand colors",
+      "placement": "Floating above background, integrated with content flow"
+    }
+  },
+
+  "navigation": {
+    "header": {
+      "background": "#FFFFFF or transparent",
+      "height": "4rem-5rem",
+      "padding": "1rem 1.5rem",
+      "boxShadow": "0 1px 3px rgba(0, 0, 0, 0.05) or none",
+      "sticky": "Yes, sticky on scroll",
+      "logo": {
+        "height": "2rem-2.5rem",
+        "style": "Text + icon/mark"
+      },
+      "links": {
+        "fontSize": "0.9375rem",
+        "fontWeight": "500",
+        "color": "#4B5563",
+        "hoverColor": "#FF6B35",
+        "spacing": "2rem between links"
+      },
+      "cta": {
+        "style": "Primary button",
+        "size": "Slightly smaller padding than page CTAs"
+      }
+    },
+    "mobileMenu": {
+      "trigger": "Hamburger icon",
+      "style": "Full-screen overlay or slide-in drawer",
+      "background": "#FFFFFF",
+      "linkStyle": "Large, stacked, ample padding"
+    }
+  },
+
+  "footer": {
+    "background": "#FDFBF7 or #1F2937 (light or dark variant)",
+    "padding": "4rem 1.5rem 2rem",
+    "layout": "Multi-column grid (4-5 columns on desktop)",
+    "columns": [
+      "Logo + description",
+      "Product/Features links",
+      "Company/About links",
+      "Resources/Support links",
+      "Social + Contact"
+    ],
+    "textColor": "#6B7280 on light bg, #9CA3AF on dark bg",
+    "headingStyle": {
+      "fontSize": "0.875rem",
+      "fontWeight": "600",
+      "color": "#111827 on light bg, #FFFFFF on dark bg",
+      "marginBottom": "1rem",
+      "textTransform": "uppercase or normal"
+    },
+    "linkStyle": {
+      "fontSize": "0.875rem",
+      "fontWeight": "400",
+      "lineHeight": "2",
+      "hoverColor": "#FF6B35"
+    },
+    "divider": {
+      "position": "Above footer",
+      "color": "#E5E7EB",
+      "width": "1px"
+    },
+    "bottom": {
+      "background": "Same as main footer",
+      "padding": "2rem 1.5rem",
+      "borderTop": "1px solid #E5E7EB",
+      "layout": "Flex: copyright left, legal links right",
+      "fontSize": "0.75rem-0.875rem",
+      "color": "#9CA3AF"
+    }
+  },
+
+  "responsive": {
+    "approach": "Mobile-first with progressive enhancement",
+    "breakpoints": {
+      "sm": "640px - Large phones",
+      "md": "768px - Tablets",
+      "lg": "1024px - Small laptops",
+      "xl": "1280px - Desktops",
+      "2xl": "1536px - Large screens"
+    },
+    "adaptations": {
+      "mobile": [
+        "Single column layouts",
+        "Reduced heading sizes (use clamp())",
+        "Full-width buttons",
+        "Stacked cards",
+        "Hamburger navigation",
+        "Reduced section padding (4rem → 2.5rem)",
+        "Smaller card padding (3rem → 2rem)"
+      ],
+      "tablet": [
+        "2-column grids",
+        "Medium heading sizes",
+        "Balanced text-image splits"
+      ],
+      "desktop": [
+        "3+ column grids",
+        "Full heading sizes",
+        "Asymmetric layouts",
+        "Generous spacing"
+      ]
+    }
+  },
+
+  "accessibility": {
+    "contrast": {
+      "textOnLight": "Minimum WCAG AA compliant",
+      "textOnDark": "White or very light gray",
+      "interactiveElements": "High contrast for focus states"
+    },
+    "focusStates": {
+      "outline": "2-3px solid #FF6B35",
+      "offset": "2px",
+      "style": "Visible on all interactive elements"
+    },
+    "typography": {
+      "minSize": "1rem (16px) for body text",
+      "lineHeight": "Minimum 1.5 for body text",
+      "linkUnderline": "Optional, but clear hover state required"
+    }
+  },
+
+  "microcopy": {
+    "tone": "Friendly, conversational, community-focused",
+    "style": "Direct and clear, avoiding jargon",
+    "ctaLanguage": [
+      "Começar agora (Start now)",
+      "Teste grátis (Free trial)",
+      "Saiba mais (Learn more)",
+      "Action-oriented, benefit-focused"
+    ],
+    "headlines": "Mixed weights for emphasis, conversational structure",
+    "descriptions": "Benefits-focused, addressing user needs directly"
+  },
+
+  "designTokens": {
+    "borderRadius": {
+      "sm": "0.375rem (6px)",
+      "md": "0.5rem (8px)",
+      "lg": "0.75rem (12px)",
+      "xl": "1rem (16px)",
+      "2xl": "1.5rem (24px)",
+      "full": "9999px (pill/circle)"
+    },
+    "opacity": {
+      "disabled": "0.4",
+      "muted": "0.6",
+      "subtle": "0.8",
+      "full": "1"
+    },
+    "zIndex": {
+      "dropdown": "1000",
+      "sticky": "1020",
+      "modal": "1050",
+      "toast": "1100"
+    }
+  },
+
+  "implementationNotes": {
+    "fonts": "Use system fonts or load Inter/DM Sans/Manrope from Google Fonts",
+    "images": "Optimize all images, use WebP format, lazy load below fold",
+    "animations": "Use CSS transforms and opacity for best performance",
+    "darkMode": "Not implemented in this design, but dark sections used strategically",
+    "performance": "Minimize layout shift, preload hero images, defer non-critical CSS"
+  }
+}

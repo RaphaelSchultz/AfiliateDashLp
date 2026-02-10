@@ -4,6 +4,7 @@ import MainLayout from './layouts/MainLayout';
 
 // Lazy Imports
 const Home = lazy(() => import('./pages/Home'));
+const ThankYou = lazy(() => import('./pages/ThankYou'));
 const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 
@@ -20,6 +21,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
+          <Route path="obrigado" element={<ThankYou />} />
           <Route path="termos-de-uso" element={<TermsOfUse />} />
           <Route path="politica-de-privacidade" element={<PrivacyPolicy />} />
         </Route>
