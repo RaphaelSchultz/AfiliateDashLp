@@ -27,7 +27,7 @@ const PrimaryButton = ({ children, className = "", onClick, pulsing = false }) =
                 <span className="relative w-5 h-5 flex items-center justify-center">
                     {/* Zap icon - fades out and rotates on hover */}
                     <Zap
-                        className={`w-4 h-4 fill-white absolute transition-all duration-500 ${
+                        className={`w-4 h-4 absolute transition-all duration-500 ${
                             isHovered ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
                         }`}
                     />
@@ -39,7 +39,7 @@ const PrimaryButton = ({ children, className = "", onClick, pulsing = false }) =
                         style={{
                             transform: 'rotate(0deg)',
                             animation: isHovered ? 'rocketShake 0.5s ease-in-out infinite' : 'none',
-                            transition: 'opacity 0.3s',
+                            transition: 'opacity 0.5s',
                         }}
                         fill="none"
                         stroke="currentColor"
