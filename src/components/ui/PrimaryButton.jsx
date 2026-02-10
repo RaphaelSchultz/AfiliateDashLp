@@ -31,11 +31,15 @@ const PrimaryButton = ({ children, className = "", onClick, pulsing = false }) =
                             isHovered ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
                         }`}
                     />
-                    {/* Rocket icon - fades in on hover with shake */}
+                    {/* Rocket icon - diagonal with vibration */}
                     <Rocket
-                        className={`w-5 h-5 absolute transition-all duration-500 ${
-                            isHovered ? 'opacity-100 scale-100 -rotate-45 -translate-y-0.5 animate-[rocketShake_0.4s_ease-in-out_infinite]' : 'opacity-0 scale-0 rotate-0'
+                        className={`w-5 h-5 absolute transition-opacity duration-300 ${
+                            isHovered ? 'opacity-100' : 'opacity-0'
                         }`}
+                        style={{
+                            transform: 'rotate(-45deg)',
+                            animation: isHovered ? 'rocketShake 0.5s ease-in-out infinite' : 'none',
+                        }}
                         fill="none"
                         stroke="currentColor"
                     />
