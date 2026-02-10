@@ -41,12 +41,17 @@ export default {
       },
       animation: {
         shimmer: 'shimmer 3s infinite linear',
+        fireFlicker: 'fireFlicker 0.4s ease-in-out infinite alternate',
       },
       keyframes: {
         shimmer: {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(200%)' },
-        }
+        },
+        fireFlicker: {
+          '0%': { transform: 'scaleY(1) translateY(0)', opacity: '0.7' },
+          '100%': { transform: 'scaleY(1.4) translateY(-2px)', opacity: '1' },
+        },
       }
     },
   },

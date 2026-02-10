@@ -49,7 +49,7 @@ const Offer = () => {
                         </div>
 
                         <PrimaryButton className="w-full text-lg py-5 mb-4 shadow-orange-glow" onClick={() => alert("Redirecionando para o Checkout...")}>
-                            GARANTIR MINHA VAGA AGORA
+                            Garantir meu acesso
                         </PrimaryButton>
 
                         <p className="text-center text-xs text-neutral-mediumGray leading-relaxed">
