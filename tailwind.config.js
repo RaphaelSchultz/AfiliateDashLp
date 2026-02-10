@@ -43,6 +43,7 @@ export default {
         shimmer: 'shimmer 3s infinite linear',
         fireFlicker: 'fireFlicker 0.4s ease-in-out infinite alternate',
         rocketShake: 'rocketShake 0.5s ease-in-out infinite',
+        glowPulse: 'glowPulse 2s ease-in-out infinite',
       },
       keyframes: {
         shimmer: {
