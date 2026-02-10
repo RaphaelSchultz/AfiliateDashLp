@@ -52,6 +52,12 @@ export default {
           '0%': { transform: 'scaleY(1) translateY(0)', opacity: '0.7' },
           '100%': { transform: 'scaleY(1.4) translateY(-2px)', opacity: '1' },
         },
+        rocketShake: {
+          '0%, 100%': { transform: 'rotate(-45deg) translate(0, -2px)' },
+          '25%': { transform: 'rotate(-47deg) translate(-1px, -3px)' },
+          '50%': { transform: 'rotate(-43deg) translate(1px, -1px)' },
+          '75%': { transform: 'rotate(-46deg) translate(-0.5px, -2.5px)' },
+        },
       }
     },
   },
