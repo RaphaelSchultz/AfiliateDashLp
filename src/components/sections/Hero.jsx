@@ -6,17 +6,17 @@ import DashboardPreview from './DashboardPreview';
 
 const Hero = ({ scrollToOffer }) => {
     return (
-        <section className="relative pt-32 pb-12 px-6 bg-neutral-cream overflow-hidden">
+        <section className="relative pt-32 pb-12 px-6 bg-neutral-cream dark:bg-slate-900 overflow-hidden transition-colors duration-300">
             {/* Background Decor */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-                <div className="absolute top-[-10%] right-[20%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl opacity-50 mix-blend-multiply filter" />
-                <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl opacity-50 mix-blend-multiply filter" />
+                <div className="absolute top-[-10%] right-[20%] w-[600px] h-[600px] bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl opacity-50 mix-blend-multiply filter" />
+                <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-secondary/10 dark:bg-secondary/20 rounded-full blur-3xl opacity-50 mix-blend-multiply filter" />
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
 
                 {/* Eyebrow Label */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-primary text-xs font-bold uppercase tracking-wider mb-8 shadow-sm">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-900/30 border border-orange-100 dark:border-orange-800 text-primary dark:text-orange-300 text-xs font-bold uppercase tracking-wider mb-8 shadow-sm">
                     <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
@@ -25,13 +25,13 @@ const Hero = ({ scrollToOffer }) => {
                 </div>
 
                 {/* Headline - Centered */}
-                <h1 className="text-4xl md:text-5xl lg:text-7xl font-display text-neutral-darkCharcoal tracking-tight mb-8 max-w-5xl font-medium">
-                    Domine seus <span className="font-semibold text-gray-900">Números</span> e <br className="hidden md:block" />
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-display text-neutral-darkCharcoal dark:text-white tracking-tight mb-8 max-w-5xl font-medium">
+                    Domine seus <span className="font-semibold text-gray-900 dark:text-gray-100">Números</span> e <br className="hidden md:block" />
                     <span className="font-semibold text-orange-600">Escalabilidade Real.</span>
                 </h1>
 
-                <p className="text-lg md:text-xl text-neutral-charcoal/80 mb-12 leading-relaxed max-w-2xl font-normal mx-auto">
-                    Deixe de lado o "feeling" e as planilhas manuais. O <strong className="text-neutral-darkCharcoal font-semibold">Afiliate Dash</strong> entrega rastreamento granular de SubIDs, análise de latência e ROI verdadeiro para afiliados profissionais.
+                <p className="text-lg md:text-xl text-neutral-charcoal/80 dark:text-gray-400 mb-12 leading-relaxed max-w-2xl font-normal mx-auto">
+                    Deixe de lado o "feeling" e as planilhas manuais. O <strong className="text-neutral-darkCharcoal dark:text-white font-semibold">Afiliate Dash</strong> entrega rastreamento granular de SubIDs, análise de latência e ROI verdadeiro para afiliados profissionais.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full mb-16">
@@ -54,16 +54,16 @@ const Hero = ({ scrollToOffer }) => {
                 </div>
 
                 {/* Trust Signals - Centered Below Image */}
-                <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-neutral-mediumGray">
+                <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-neutral-mediumGray dark:text-gray-400">
                     <div className="flex items-center gap-3">
                         <div className="flex -space-x-3">
                             {[1, 2, 3].map((i) => (
-                                <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs overflow-hidden">
+                                <div key={i} className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-gray-200 flex items-center justify-center text-xs overflow-hidden">
                                     <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=e5e7eb`} alt="User" />
                                 </div>
                             ))}
                         </div>
-                        <p>Junte-se a <strong className="text-neutral-darkCharcoal">afiliados que dominam seus números</strong>.</p>
+                        <p>Junte-se a <strong className="text-neutral-darkCharcoal dark:text-white">afiliados que dominam seus números</strong>.</p>
                     </div>
 
                     <button

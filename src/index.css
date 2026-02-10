@@ -4,8 +4,17 @@
 
 body {
   margin: 0;
-  background-color: #FDFBF7; /* neutral.cream */
-  color: #1F2937; /* neutral.charcoal */
+  background-color: #FDFBF7;
+  /* neutral.cream */
+  color: #1F2937;
+  /* neutral.charcoal */
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  background-color: #0f172a;
+  /* Slate 900 - Deep Dark Blue */
+  color: #FDFBF7;
+  /* neutral.cream text for dark mode */
 }

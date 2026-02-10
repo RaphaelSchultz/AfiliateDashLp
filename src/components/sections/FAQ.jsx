@@ -5,11 +5,11 @@ const FAQ = () => {
     const [openFaq, setOpenFaq] = useState(0);
 
     return (
-        <section className="py-24 px-6 bg-white border-t border-neutral-warmBeige">
+        <section className="py-24 px-6 bg-white dark:bg-slate-900 border-t border-neutral-warmBeige dark:border-slate-800 transition-colors duration-300">
             <div className="max-w-3xl mx-auto">
                 <div className="text-center mb-12">
                     <span className="text-primary font-bold tracking-wider uppercase text-xs mb-2 block">Tira-dúvidas</span>
-                    <h2 className="text-3xl font-bold text-neutral-darkCharcoal font-display">
+                    <h2 className="text-3xl font-bold text-neutral-darkCharcoal dark:text-white font-display">
                         Perguntas Frequentes
                     </h2>
                 </div>

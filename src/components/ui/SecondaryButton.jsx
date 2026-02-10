@@ -4,8 +4,8 @@ const SecondaryButton = ({ children, className = "", onClick }) => (
     <button
         onClick={onClick}
         className={`
-    rounded-[14px] px-8 py-2.5 font-bold text-orange-600
-    border-2 border-orange-600 bg-transparent hover:bg-orange-50
+    rounded-[14px] px-8 py-2.5 font-bold text-orange-600 dark:text-orange-500
+    border-2 border-orange-600 dark:border-orange-500 bg-transparent hover:bg-orange-50 dark:hover:bg-orange-900/20
     transition-all duration-200
     flex items-center justify-center gap-2
     ${className}

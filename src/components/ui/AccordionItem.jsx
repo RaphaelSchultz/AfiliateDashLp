@@ -3,12 +3,12 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const AccordionItem = ({ question, answer, isOpen, onClick }) => {
     return (
-        <div className="border-b border-neutral-warmBeige last:border-0">
+        <div className="border-b border-neutral-warmBeige dark:border-slate-800 last:border-0">
             <button
                 className="w-full py-6 flex items-center justify-between text-left focus:outline-none group"
                 onClick={onClick}
             >
-                <span className="text-lg font-bold text-neutral-darkCharcoal group-hover:text-primary transition-colors">
+                <span className="text-lg font-bold text-neutral-darkCharcoal dark:text-gray-100 group-hover:text-primary transition-colors">
                     {question}
                 </span>
                 {isOpen ? <ChevronUp className="text-primary" /> : <ChevronDown className="text-neutral-mediumGray group-hover:text-primary transition-colors" />}
@@ -16,7 +16,7 @@ const AccordionItem = ({ question, answer, isOpen, onClick }) => {
             <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-48 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
             >
-                <p className="text-neutral-charcoal leading-relaxed">
+                <p className="text-neutral-charcoal dark:text-gray-400 leading-relaxed">
                     {answer}
                 </p>
             </div>
