@@ -12,10 +12,11 @@ const PrimaryButton = ({ children, className = "", onClick, pulsing = false }) =
             className={`
                 relative group overflow-hidden rounded-[14px] px-10 font-bold text-white text-base
                 bg-orange-600 hover:bg-orange-700 border-2 border-transparent
-                shadow-orange-glow hover:shadow-soft-xl hover:-translate-y-0.5
+                shadow-[0_0_15px_rgba(255,107,53,0.3)] hover:shadow-[0_0_25px_rgba(255,107,53,0.5)] hover:-translate-y-0.5 hover:scale-105
                 transition-all duration-200 ease-out
                 flex items-center justify-center gap-2
                 h-[46px]
+                animate-glowPulse
                 ${className}
             `}
         >
