@@ -2,15 +2,22 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext();
 
+const THEME_EXPIRY_MS = 24 * 60 * 60 * 1000; // 24 horas
+
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
         if (typeof window !== 'undefined') {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                return savedTheme;
-            }
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                return 'dark';
+            const saved = localStorage.getItem('theme');
+            const savedAt = localStorage.getItem('theme_saved_at');
+
+            if (saved && savedAt) {
+                const elapsed = Date.now() - Number(savedAt);
+                if (elapsed < THEME_EXPIRY_MS) {
+                    return saved;
+                }
+                // Expirou — limpar e usar light
+                localStorage.removeItem('theme');
+                localStorage.removeItem('theme_saved_at');
             }
         }
         return 'light';
@@ -24,6 +31,7 @@ export const ThemeProvider = ({ children }) => {
             root.classList.remove('dark');
         }
         localStorage.setItem('theme', theme);
+        localStorage.setItem('theme_saved_at', String(Date.now()));
     }, [theme]);
 
     const toggleTheme = () => {
