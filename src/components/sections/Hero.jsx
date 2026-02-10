@@ -38,7 +38,7 @@ const Hero = ({ scrollToOffer }) => {
                     <PrimaryButton onClick={scrollToOffer} className="w-auto shadow-orange-glow" pulsing={true}>
                         Garantir meu acesso
                     </PrimaryButton>
-                    <SecondaryButton onClick={scrollToOffer} className="w-auto text-base px-10">
+                    <SecondaryButton onClick={scrollToOffer} className="hidden sm:inline-flex w-auto text-base px-10">
                         Ver Planos
                     </SecondaryButton>
                 </div>

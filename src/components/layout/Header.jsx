@@ -101,9 +101,6 @@ const Header = ({ scrollToOffer }) => {
                     </button>
                     <div className="h-px bg-neutral-100 dark:bg-slate-800 my-2" />
                     <a href="https://app.afiliadodash.com/login" className="w-full text-left py-2 text-neutral-charcoal dark:text-gray-200 hover:text-primary font-medium block">Entrar</a>
-                    <button onClick={() => { scrollToOffer(); setIsMobileMenuOpen(false) }} style={{ borderRadius: '12px' }} className="w-full py-3 bg-orange-600 hover:opacity-90 text-white font-bold text-center shadow-soft-md transition-opacity">
-                        Ver Planos
-                    </button>
                 </div>
             )}
         </nav>
