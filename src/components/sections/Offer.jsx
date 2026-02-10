@@ -29,7 +29,7 @@ const Offer = () => {
                             <div className="text-5xl md:text-6xl font-black text-neutral-darkCharcoal dark:text-white mb-2 tracking-tight">
                                 R$ 97,00<span className="text-lg font-medium text-neutral-charcoal dark:text-gray-400">/mês</span>
                             </div>
-                            <p className="text-orange-600 dark:text-orange-400 text-sm font-bold bg-orange-50 dark:bg-orange-900/30 inline-block px-3 py-1 rounded-full">Preço travado para sempre. Cancele quando quiser.</p>
+                            <p className="text-orange-600 dark:text-orange-400 text-sm font-medium bg-orange-50 dark:bg-orange-900/30 inline-block px-3 py-1 rounded-full">Oferta especial de lançamento</p>
                         </div>
 
                         <div className="space-y-4 mb-10 border-t border-b border-neutral-lightGray dark:border-slate-700 py-6">
@@ -48,7 +48,7 @@ const Offer = () => {
                             ))}
                         </div>
 
-                        <PrimaryButton className="w-full text-lg mb-4 shadow-orange-glow" onClick={() => alert("Redirecionando para o Checkout...")}>
+                        <PrimaryButton className="w-full text-lg mb-4 shadow-orange-glow" onClick={() => window.location.href = 'https://pay.kirvano.com/ef25e386-7e51-465b-b31b-085f9a3c7c1b'}>
                             Garantir meu acesso
                         </PrimaryButton>
 

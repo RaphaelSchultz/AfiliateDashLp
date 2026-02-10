@@ -54,29 +54,15 @@ const Hero = ({ scrollToOffer }) => {
                 </div>
 
                 {/* Trust Signals - Centered Below Image */}
-                <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-neutral-mediumGray dark:text-gray-400">
-                    <div className="flex items-center gap-3">
-                        <div className="flex -space-x-3">
-                            {[1, 2, 3].map((i) => (
-                                <div key={i} className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-gray-200 flex items-center justify-center text-xs overflow-hidden">
-                                    <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=e5e7eb`} alt="User" />
-                                </div>
-                            ))}
-                        </div>
-                        <p>Junte-se a <strong className="text-neutral-darkCharcoal dark:text-white">afiliados que dominam seus números</strong>.</p>
+                <div className="mt-12 flex items-center justify-center gap-3 text-sm text-neutral-mediumGray dark:text-gray-400">
+                    <div className="flex -space-x-3">
+                        {[1, 2, 3].map((i) => (
+                            <div key={i} className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-gray-200 flex items-center justify-center text-xs overflow-hidden">
+                                <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=e5e7eb`} alt="User" />
+                            </div>
+                        ))}
                     </div>
-
-                    <button
-                        onClick={scrollToOffer}
-                        style={{ borderRadius: '12px' }}
-                        className="group relative overflow-hidden px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-[0_0_20px_rgba(255,107,53,0.4)] hover:scale-105 flex items-center gap-2 animate-glowPulse"
-                    >
-                        {/* Shimmer Effect */}
-                        <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] animate-[shimmer_3s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10" />
-
-                        <Zap className="w-3 h-3 fill-white z-20" />
-                        <span className="z-20">Garantir meu acesso</span>
-                    </button>
+                    <p>Junte-se a <strong className="text-neutral-darkCharcoal dark:text-white">afiliados que dominam seus números</strong>.</p>
                 </div>
             </div>
         </section>
