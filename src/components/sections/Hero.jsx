@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 import PrimaryButton from '../ui/PrimaryButton';
 import SecondaryButton from '../ui/SecondaryButton';
 import DashboardPreview from './DashboardPreview';
@@ -37,7 +37,6 @@ const Hero = ({ scrollToOffer }) => {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full mb-16">
                     <PrimaryButton onClick={scrollToOffer} className="w-auto text-base px-10 shadow-orange-glow" pulsing={true}>
                         Começar Agora
-                        <ArrowRight size={18} />
                     </PrimaryButton>
                     <SecondaryButton onClick={scrollToOffer} className="w-auto text-base px-10">
                         Ver Planos
@@ -54,7 +53,6 @@ const Hero = ({ scrollToOffer }) => {
                     </div>
                 </div>
 
-                {/* Trust Signals - Centered Below Image (Optional, or moved up if preferred, but keeping it simple for now) */}
                 {/* Trust Signals - Centered Below Image */}
                 <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-neutral-mediumGray">
                     <div className="flex items-center gap-3">
@@ -71,9 +69,13 @@ const Hero = ({ scrollToOffer }) => {
                     <button
                         onClick={scrollToOffer}
                         style={{ borderRadius: '12px' }}
-                        className="px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition-colors shadow-sm hover:shadow-md"
+                        className="group relative overflow-hidden px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition-colors shadow-sm hover:shadow-md flex items-center gap-2"
                     >
-                        Começar Agora
+                        {/* Shimmer Effect */}
+                        <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] animate-[shimmer_3s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10" />
+
+                        <Zap className="w-3 h-3 fill-white z-20" />
+                        <span className="z-20">Começar Agora</span>
                     </button>
                 </div>
             </div>

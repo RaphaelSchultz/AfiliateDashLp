@@ -37,7 +37,15 @@ export default {
         'soft-md': '0 4px 12px rgba(0, 0, 0, 0.08)',
         'soft-lg': '0 8px 24px rgba(0, 0, 0, 0.1)',
         'soft-xl': '0 12px 36px rgba(0, 0, 0, 0.12)',
-        'orange-glow': '0 4px 16px rgba(255, 107, 53, 0.2)',
+      },
+      animation: {
+        shimmer: 'shimmer 3s infinite linear',
+      },
+      keyframes: {
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(200%)' },
+        }
       }
     },
   },
