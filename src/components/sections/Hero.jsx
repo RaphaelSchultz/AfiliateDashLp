@@ -35,8 +35,8 @@ const Hero = ({ scrollToOffer }) => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full mb-16">
-                    <PrimaryButton onClick={scrollToOffer} className="w-auto text-base px-10 shadow-orange-glow" pulsing={true}>
-                        Começar Agora
+                    <PrimaryButton onClick={scrollToOffer} className="w-auto shadow-orange-glow" pulsing={true}>
+                        Garantir meu acesso
                     </PrimaryButton>
                     <SecondaryButton onClick={scrollToOffer} className="w-auto text-base px-10">
                         Ver Planos
@@ -75,7 +75,7 @@ const Hero = ({ scrollToOffer }) => {
                         <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] animate-[shimmer_3s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10" />
 
                         <Zap className="w-3 h-3 fill-white z-20" />
-                        <span className="z-20">Começar Agora</span>
+                        <span className="z-20">Garantir meu acesso</span>
                     </button>
                 </div>
             </div>
