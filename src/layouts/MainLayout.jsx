@@ -23,16 +23,16 @@ const MainLayout = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#0B1121] text-gray-300 font-sans selection:bg-orange-500/30 selection:text-orange-200 overflow-x-hidden flex flex-col">
-            {/* Background Ambience - Moved here to persist across pages */}
+        <div className="min-h-screen bg-neutral-cream text-neutral-charcoal font-sans selection:bg-orange-500/30 selection:text-orange-900 overflow-x-hidden flex flex-col">
+            {/* Background Ambience - Light Mode */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-[-10%] left-[20%] w-[30%] h-[30%] bg-blue-900/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-orange-900/10 rounded-full blur-[120px]" />
+                <div className="absolute top-[-10%] left-[20%] w-[30%] h-[30%] bg-blue-100/50 rounded-full blur-[120px] mix-blend-multiply" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-orange-100/50 rounded-full blur-[120px] mix-blend-multiply" />
             </div>
 
             <Header scrollToOffer={scrollToOffer} />
 
-            <main className="relative z-10 pt-20 flex-grow">
+            <main className="relative z-10 flex-grow">
                 <Suspense fallback={<LoadingData />}>
                     <Outlet />
                 </Suspense>

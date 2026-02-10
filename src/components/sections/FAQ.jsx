@@ -5,13 +5,16 @@ const FAQ = () => {
     const [openFaq, setOpenFaq] = useState(0);
 
     return (
-        <section className="py-24 px-6 bg-[#080c17] border-t border-white/5">
+        <section className="py-24 px-6 bg-white border-t border-neutral-warmBeige">
             <div className="max-w-3xl mx-auto">
-                <h2 className="text-3xl font-bold text-white text-center mb-12">
-                    Dúvidas Frequentes
-                </h2>
+                <div className="text-center mb-12">
+                    <span className="text-primary font-bold tracking-wider uppercase text-xs mb-2 block">Tira-dúvidas</span>
+                    <h2 className="text-3xl font-bold text-neutral-darkCharcoal font-display">
+                        Perguntas Frequentes
+                    </h2>
+                </div>
 
-                <div className="space-y-2">
+                <div className="space-y-3">
                     {[
                         {
                             q: "Como o Afiliate Dash difere do painel da Shopee?",

@@ -4,4 +4,8 @@
 
 body {
   margin: 0;
+  background-color: #FDFBF7; /* neutral.cream */
+  color: #1F2937; /* neutral.charcoal */
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }

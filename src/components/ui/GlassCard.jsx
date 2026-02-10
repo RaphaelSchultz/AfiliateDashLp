@@ -3,12 +3,12 @@ import React from 'react';
 const GlassCard = ({ children, className = "", hoverEffect = true }) => (
     <div className={`
     relative overflow-hidden
-    bg-[#111827]/90 md:backdrop-blur-sm 
-    border border-white/5 
+    bg-white/80 backdrop-blur-md
+    border border-white/20
     rounded-2xl p-6 
-    shadow-lg
+    shadow-soft-lg
     transition-all duration-300
-    ${hoverEffect ? 'hover:border-orange-500/30 hover:shadow-[0_0_30px_rgba(249,115,22,0.1)] group' : ''}
+    ${hoverEffect ? 'hover:border-primary/20 hover:shadow-soft-xl hover:-translate-y-1' : ''}
     ${className}
   `}>
         {children}

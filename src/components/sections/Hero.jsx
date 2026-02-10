@@ -1,42 +1,81 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import GradientText from '../ui/GradientText';
 import PrimaryButton from '../ui/PrimaryButton';
 import SecondaryButton from '../ui/SecondaryButton';
 import DashboardPreview from './DashboardPreview';
 
 const Hero = ({ scrollToOffer }) => {
     return (
-        <section className="relative pt-20 pb-20 px-6">
-            <div className="max-w-7xl mx-auto text-center">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-wider mb-8 animate-fade-in-up">
+        <section className="relative pt-32 pb-12 px-6 bg-neutral-cream overflow-hidden">
+            {/* Background Decor */}
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+                <div className="absolute top-[-10%] right-[20%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl opacity-50 mix-blend-multiply filter" />
+                <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl opacity-50 mix-blend-multiply filter" />
+            </div>
+
+            <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
+
+                {/* Eyebrow Label */}
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-primary text-xs font-bold uppercase tracking-wider mb-8 shadow-sm">
                     <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                     </span>
-                    Oferta de Lançamento Ativa
+                    Plataforma de Alta Performance
                 </div>
 
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-8 max-w-5xl mx-auto">
-                    Domine seus Números e <br className="hidden md:block" />
-                    <GradientText>Escalabilidade Real.</GradientText>
+                {/* Headline - Centered */}
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-display text-neutral-darkCharcoal tracking-tight mb-8 max-w-5xl font-medium">
+                    Domine seus <span className="font-semibold text-gray-900">Números</span> e <br className="hidden md:block" />
+                    <span className="font-semibold text-orange-600">Escalabilidade Real.</span>
                 </h1>
 
-                <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
-                    Deixe de lado o "feeling" e as planilhas manuais. O <strong className="text-gray-200 font-semibold">Afiliate Dash</strong> entrega rastreamento granular de SubIDs, análise de latência e ROI verdadeiro para afiliados profissionais.
+                <p className="text-lg md:text-xl text-neutral-charcoal/80 mb-12 leading-relaxed max-w-2xl font-normal mx-auto">
+                    Deixe de lado o "feeling" e as planilhas manuais. O <strong className="text-neutral-darkCharcoal font-semibold">Afiliate Dash</strong> entrega rastreamento granular de SubIDs, análise de latência e ROI verdadeiro para afiliados profissionais.
                 </p>
 
-                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-20">
-                    <PrimaryButton onClick={scrollToOffer} className="w-full md:w-auto text-lg px-12 py-5 shadow-orange-500/20" pulsing={true}>
-                        QUERO ACESSO VITALÍCIO
-                        <ArrowRight size={20} />
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full mb-16">
+                    <PrimaryButton onClick={scrollToOffer} className="w-auto text-base px-10 shadow-orange-glow" pulsing={true}>
+                        Começar Agora
+                        <ArrowRight size={18} />
                     </PrimaryButton>
-                    <SecondaryButton className="w-full md:w-auto py-5">
-                        Ver Demonstração
+                    <SecondaryButton onClick={scrollToOffer} className="w-auto text-base px-10">
+                        Ver Planos
                     </SecondaryButton>
                 </div>
 
-                <DashboardPreview />
+                {/* Dashboard Preview - Centered and Large */}
+                <div id="dashboard-preview" className="w-full max-w-5xl relative perspective-1000 mx-auto">
+                    {/* Decorative Elements behind image */}
+                    <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-gradient-radial from-orange-500/10 to-transparent blur-3xl pointer-events-none" />
+
+                    <div className="relative transform hover:scale-[1.01] transition-transform duration-700 ease-out">
+                        <DashboardPreview />
+                    </div>
+                </div>
+
+                {/* Trust Signals - Centered Below Image (Optional, or moved up if preferred, but keeping it simple for now) */}
+                {/* Trust Signals - Centered Below Image */}
+                <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-neutral-mediumGray">
+                    <div className="flex items-center gap-3">
+                        <div className="flex -space-x-3">
+                            {[1, 2, 3].map((i) => (
+                                <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs overflow-hidden">
+                                    <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=e5e7eb`} alt="User" />
+                                </div>
+                            ))}
+                        </div>
+                        <p>Junte-se a <strong className="text-neutral-darkCharcoal">afiliados que dominam seus números</strong>.</p>
+                    </div>
+
+                    <button
+                        onClick={scrollToOffer}
+                        style={{ borderRadius: '12px' }}
+                        className="px-6 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition-colors shadow-sm hover:shadow-md"
+                    >
+                        Começar Agora
+                    </button>
+                </div>
             </div>
         </section>
     );

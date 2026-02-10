@@ -7,12 +7,12 @@ const ThankYou = () => {
     const userEmail = "seu-email@exemplo.com";
 
     return (
-        <div className="min-h-screen bg-slate-600 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-neutral-charcoal flex items-center justify-center p-4">
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="max-w-[500px] w-full bg-white rounded-2xl shadow-2xl overflow-hidden"
+                className="max-w-[500px] w-full bg-white rounded-2xl shadow-soft-2xl overflow-hidden"
             >
                 <div className="p-10 text-center">
                     {/* Success Icon Animation */}
@@ -20,16 +20,16 @@ const ThankYou = () => {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 15 }}
-                        className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+                        className="w-16 h-16 bg-accent-greenLight rounded-full flex items-center justify-center mx-auto mb-6"
                     >
-                        <Check className="w-8 h-8 text-green-500" strokeWidth={3} />
+                        <Check className="w-8 h-8 text-accent-green" strokeWidth={3} />
                     </motion.div>
 
-                    <h1 className="text-2xl font-bold text-slate-800 mb-2">
+                    <h1 className="text-2xl font-bold text-neutral-darkCharcoal mb-2 font-display">
                         Pagamento confirmado!
                     </h1>
 
-                    <p className="text-slate-500 mb-8 text-sm px-4">
+                    <p className="text-neutral-mediumGray mb-8 text-sm px-4">
                         Estamos felizes em ter você a bordo para escalar suas vendas na Shopee.
                     </p>
 
@@ -54,7 +54,7 @@ const ThankYou = () => {
                     <div className="space-y-4">
                         <a
                             href="https://app.afiliadodash.com/login"
-                            className="w-full inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg shadow-orange-600/20 group"
+                            className="w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-soft-lg hover:shadow-soft-xl group"
                         >
                             Ir para o Login
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -64,13 +64,13 @@ const ThankYou = () => {
                             href="https://mail.google.com"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block text-slate-400 hover:text-slate-600 font-medium text-sm transition-colors"
+                            className="block text-neutral-mediumGray hover:text-neutral-charcoal font-medium text-sm transition-colors"
                         >
                             Abrir Gmail
                         </a>
                     </div>
 
-                    <div className="mt-12 text-[10px] text-slate-300">
+                    <div className="mt-12 text-[10px] text-neutral-mediumGray">
                         Afiliado Dash © 2026
                     </div>
                 </div>
