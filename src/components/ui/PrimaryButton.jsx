@@ -33,13 +33,9 @@ const PrimaryButton = ({ children, className = "", onClick, pulsing = false }) =
                     />
                     {/* Rocket icon - diagonal with vibration */}
                     <Rocket
-                        className={`w-5 h-5 absolute transition-opacity duration-300 ${
-                            isHovered ? 'opacity-100' : 'opacity-0'
+                        className={`w-5 h-5 absolute transition-opacity duration-300 -rotate-45 ${
+                            isHovered ? 'opacity-100 animate-rocketShake' : 'opacity-0'
                         }`}
-                        style={{
-                            transform: 'rotate(-45deg)',
-                            animation: isHovered ? 'rocketShake 0.5s ease-in-out infinite' : 'none',
-                        }}
                         fill="none"
                         stroke="currentColor"
                     />
