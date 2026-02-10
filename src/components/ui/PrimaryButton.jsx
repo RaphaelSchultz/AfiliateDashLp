@@ -37,7 +37,7 @@ const PrimaryButton = ({ children, className = "", onClick, pulsing = false }) =
                             isHovered ? 'opacity-100' : 'opacity-0'
                         }`}
                         style={{
-                            transform: 'rotate(45deg)',
+                            transform: 'rotate(0deg)',
                             animation: isHovered ? 'rocketShake 0.5s ease-in-out infinite' : 'none',
                             transition: 'opacity 0.3s',
                         }}
