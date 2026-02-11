@@ -7,8 +7,6 @@ import {
     Smartphone,
     CheckCircle2
 } from 'lucide-react';
-import GradientText from '../ui/GradientText';
-import GlassCard from '../ui/GlassCard';
 
 const Features = () => {
     return (
