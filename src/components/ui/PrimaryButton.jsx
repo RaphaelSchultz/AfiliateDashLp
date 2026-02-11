@@ -10,7 +10,7 @@ const PrimaryButton = ({ children, className = "", onClick, pulsing = false }) =
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             className={`
-                relative group overflow-hidden rounded-[14px] px-10 font-bold text-white text-base
+                relative group overflow-hidden rounded-[14px] px-6 sm:px-10 font-bold text-white text-base whitespace-nowrap
                 bg-orange-600 hover:bg-orange-700 border-2 border-transparent
                 shadow-[0_0_15px_rgba(255,107,53,0.3)] hover:shadow-[0_0_25px_rgba(255,107,53,0.5)] hover:-translate-y-0.5 hover:scale-105
                 transition-all duration-200 ease-out
@@ -28,15 +28,13 @@ const PrimaryButton = ({ children, className = "", onClick, pulsing = false }) =
                 <span className="relative w-5 h-5 flex items-center justify-center">
                     {/* Zap icon - fades out and rotates on hover */}
                     <Zap
-                        className={`w-4 h-4 absolute transition-all duration-500 ${
-                            isHovered ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
-                        }`}
+                        className={`w-4 h-4 absolute transition-all duration-500 ${isHovered ? 'opacity-0 rotate-180 scale-0' : 'opacity-100 rotate-0 scale-100'
+                            }`}
                     />
                     {/* Rocket icon - diagonal with vibration */}
                     <Rocket
-                        className={`w-5 h-5 absolute ${
-                            isHovered ? 'opacity-100' : 'opacity-0'
-                        }`}
+                        className={`w-5 h-5 absolute ${isHovered ? 'opacity-100' : 'opacity-0'
+                            }`}
                         style={{
                             transform: 'rotate(0deg)',
                             animation: isHovered ? 'rocketShake 0.5s ease-in-out infinite' : 'none',

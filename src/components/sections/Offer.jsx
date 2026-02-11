@@ -13,10 +13,10 @@ const Offer = () => {
                     {/* Border Effect - Subtle Orange Gradient */}
                     <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 via-red-400 to-orange-400 rounded-2xl opacity-30 blur-sm"></div>
 
-                    <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-8 md:p-12 border border-neutral-warmBeige dark:border-slate-700 shadow-2xl transition-colors duration-300">
+                    <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-8 md:p-12 border border-neutral-warmBeige dark:border-slate-700 shadow-2xl transition-colors duration-300">
 
-                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center">
-                            <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold px-6 py-2 rounded-full text-sm uppercase tracking-wider shadow-lg shadow-orange-500/30">
+                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center px-4">
+                            <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold px-4 sm:px-6 py-2 rounded-full text-[11px] sm:text-sm uppercase tracking-wider shadow-lg shadow-orange-500/30 whitespace-nowrap">
                                 Condição Exclusiva de Fundador
                             </span>
                         </div>
@@ -26,8 +26,8 @@ const Offer = () => {
                             <div className="flex items-center justify-center gap-4 mb-2">
                                 <span className="text-neutral-mediumGray text-lg line-through decoration-red-400 decoration-2">De R$ 147,90/mês</span>
                             </div>
-                            <div className="text-5xl md:text-6xl font-black text-neutral-darkCharcoal dark:text-white mb-2 tracking-tight">
-                                R$ 97,00<span className="text-lg font-medium text-neutral-charcoal dark:text-gray-400">/mês</span>
+                            <div className="text-4xl sm:text-5xl md:text-6xl font-black text-neutral-darkCharcoal dark:text-white mb-2 tracking-tight whitespace-nowrap">
+                                R$ 97,00<span className="text-base sm:text-lg font-medium text-neutral-charcoal dark:text-gray-400">/mês</span>
                             </div>
                             <p className="text-orange-600 dark:text-orange-400 text-sm font-medium bg-orange-50 dark:bg-orange-900/30 inline-block px-3 py-1 rounded-full">Oferta especial de lançamento</p>
                         </div>
@@ -48,7 +48,7 @@ const Offer = () => {
                             ))}
                         </div>
 
-                        <PrimaryButton className="w-full text-lg mb-4 shadow-orange-glow" onClick={() => window.location.href = 'https://pay.kirvano.com/ef25e386-7e51-465b-b31b-085f9a3c7c1b'}>
+                        <PrimaryButton className="w-full text-base sm:text-lg mb-4 shadow-orange-glow whitespace-nowrap" onClick={() => window.location.href = 'https://pay.kirvano.com/ef25e386-7e51-465b-b31b-085f9a3c7c1b'}>
                             Garantir meu acesso
                         </PrimaryButton>
 

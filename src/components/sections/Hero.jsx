@@ -6,7 +6,7 @@ import DashboardPreview from './DashboardPreview';
 
 const Hero = ({ scrollToOffer }) => {
     return (
-        <section className="relative pt-32 pb-12 px-6 bg-neutral-cream dark:bg-slate-900 overflow-hidden transition-colors duration-300">
+        <section className="relative pt-28 sm:pt-32 pb-12 px-4 sm:px-6 bg-neutral-cream dark:bg-slate-900 overflow-hidden transition-colors duration-300">
             {/* Background Decor */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
                 <div className="absolute top-[-10%] right-[20%] w-[600px] h-[600px] bg-primary/5 dark:bg-primary/10 rounded-full blur-2xl opacity-50" />
@@ -25,13 +25,13 @@ const Hero = ({ scrollToOffer }) => {
                 </div>
 
                 {/* Headline - Centered */}
-                <h1 className="text-4xl md:text-5xl lg:text-7xl font-display text-neutral-darkCharcoal dark:text-white tracking-tight mb-8 max-w-5xl font-medium">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display text-neutral-darkCharcoal dark:text-white tracking-tight mb-6 sm:mb-8 max-w-5xl font-medium">
                     Domine seus <span className="font-semibold text-gray-900 dark:text-gray-100">Números</span> e <br className="hidden md:block" />
                     <span className="font-semibold text-orange-600">Escalabilidade Real.</span>
                 </h1>
 
-                <p className="text-lg md:text-xl text-neutral-charcoal/80 dark:text-gray-400 mb-12 leading-relaxed max-w-2xl font-normal mx-auto">
-                    Deixe de lado o "feeling" e as planilhas manuais. O <strong className="text-neutral-darkCharcoal dark:text-white font-semibold">Afiliate Dash</strong> entrega rastreamento granular de SubIDs, análise de latência e ROI verdadeiro para afiliados profissionais.
+                <p className="text-base sm:text-lg md:text-xl text-neutral-charcoal/80 dark:text-gray-400 mb-8 sm:mb-12 leading-relaxed max-w-2xl font-normal mx-auto">
+                    Deixe de lado o "feeling" e as planilhas manuais. O <strong className="text-neutral-darkCharcoal dark:text-white font-semibold">Afiliado Dash</strong> entrega rastreamento granular de SubIDs, análise de latência e ROI verdadeiro para afiliados profissionais.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full mb-16">
@@ -54,11 +54,11 @@ const Hero = ({ scrollToOffer }) => {
                 </div>
 
                 {/* Trust Signals - Centered Below Image */}
-                <div className="mt-12 flex items-center justify-center gap-3 text-sm text-neutral-mediumGray dark:text-gray-400">
+                <div className="mt-8 sm:mt-12 flex items-center justify-center gap-3 text-xs sm:text-sm text-neutral-mediumGray dark:text-gray-400">
                     <div className="flex -space-x-3">
-                        {[1, 2, 3].map((i) => (
-                            <div key={i} className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-gray-200 flex items-center justify-center text-xs overflow-hidden">
-                                <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}&backgroundColor=e5e7eb`} alt="User" />
+                        {['R', 'A', 'M'].map((letter, i) => (
+                            <div key={i} className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white dark:border-slate-800 bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-xs font-bold text-orange-600 dark:text-orange-400">
+                                {letter}
                             </div>
                         ))}
                     </div>
