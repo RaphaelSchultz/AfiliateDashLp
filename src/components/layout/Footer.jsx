@@ -44,9 +44,6 @@ const Footer = () => {
 
                 <div className="border-t border-neutral-warmBeige dark:border-white/10 py-8 text-center">
                     <p className="text-sm">Afiliado Dash · © 2026 · Todos os direitos reservados.</p>
-                    <div className="text-[0.85rem] mt-2">
-                        64.940.337 THAYNARA SCHULTZ DE ALMEIDA COSTA
-                    </div>
                 </div>
             </div>
         </footer>
