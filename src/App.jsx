@@ -8,6 +8,8 @@ const Home = lazy(() => import('./pages/Home'));
 const ThankYou = lazy(() => import('./pages/ThankYou'));
 const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const LpNewVersion = lazy(() => import('./pages/LpNewVersion'));
+const LpNewVersion2 = lazy(() => import('./pages/LpNewVersion2'));
 
 // Loading component
 const LoadingData = () => (
@@ -28,6 +30,8 @@ export default function App() {
             <Route path="termos-de-uso" element={<TermsOfUse />} />
             <Route path="politica-de-privacidade" element={<PrivacyPolicy />} />
           </Route>
+          <Route path="/lp-newversion" element={<LpNewVersion />} />
+          <Route path="/lp-newversion-2" element={<LpNewVersion2 />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
