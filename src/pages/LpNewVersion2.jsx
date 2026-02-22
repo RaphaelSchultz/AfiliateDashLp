@@ -42,7 +42,7 @@ const ensureVTurbScript = () => {
 export default function LpNewVersion2() {
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = 'Upsell 1 - V2';
+    document.title = 'AfiliadoDash';
 
     ensureClarityScript();
     ensureVTurbScript();
