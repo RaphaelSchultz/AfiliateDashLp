@@ -48,7 +48,7 @@ const Offer = () => {
                             ))}
                         </div>
 
-                        <PrimaryButton className="w-full text-base sm:text-lg mb-4 shadow-orange-glow whitespace-nowrap" onClick={() => window.location.href = 'https://pay.kirvano.com/ef25e386-7e51-465b-b31b-085f9a3c7c1b'}>
+                        <PrimaryButton className="w-full text-base sm:text-lg mb-4 shadow-orange-glow whitespace-nowrap" onClick={() => window.location.href = 'https://buy.stripe.com/14A3cx9Vka56cW5edU1Nu00'}>
                             Garantir meu acesso
                         </PrimaryButton>
 
