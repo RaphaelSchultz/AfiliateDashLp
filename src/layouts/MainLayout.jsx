@@ -23,12 +23,8 @@ const MainLayout = () => {
     };
 
     return (
-        <div className="min-h-screen bg-neutral-cream dark:bg-slate-900 text-neutral-charcoal dark:text-gray-100 font-sans selection:bg-orange-500/30 selection:text-orange-900 overflow-x-hidden flex flex-col transition-colors duration-300">
-            {/* Background Ambience - Light Mode Only */}
-            <div className="fixed inset-0 pointer-events-none z-0 dark:hidden">
-                <div className="absolute top-[-10%] left-[20%] w-[30%] h-[30%] bg-blue-100/50 rounded-full blur-2xl" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-orange-100/50 rounded-full blur-2xl" />
-            </div>
+        <div className="min-h-screen bg-white text-[#1D2939] selection:bg-orange-500/20 selection:text-orange-900 overflow-x-hidden flex flex-col">
+
 
             <Header scrollToOffer={scrollToOffer} />
 

@@ -1,72 +1,226 @@
-import React from 'react';
-import { ArrowRight, Zap } from 'lucide-react';
-import PrimaryButton from '../ui/PrimaryButton';
-import SecondaryButton from '../ui/SecondaryButton';
-import DashboardPreview from './DashboardPreview';
+import React, { useEffect, useState } from 'react';
+import { ArrowRight, CheckCircle2, Clock } from 'lucide-react';
+
+const rotatingWords = ['SubIDs', 'Comissões', 'Campanhas', 'ROAS', 'Grupos'];
+
+const integrations = [
+  { src: '/images/shopee-logo.webp',    alt: 'Shopee'    },
+  { src: '/images/meta-ads-logo.png',   alt: 'Meta Ads'  },
+  { src: '/images/Instagram_logo.svg',  alt: 'Instagram' },
+  { src: '/images/whatsapp_logo.webp',  alt: 'WhatsApp'  },
+];
+
+const RotatingWord = () => {
+  const [index, setIndex] = useState(0);
+  const [animClass, setAnimClass] = useState('word-in');
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimClass('word-out');
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % rotatingWords.length);
+        setAnimClass('word-in');
+      }, 220);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <span className="relative inline-block overflow-hidden align-bottom" style={{ minWidth: '185px' }}>
+      <span key={rotatingWords[index]} className={`text-orange-500 ${animClass}`} style={{ display: 'inline-block' }}>
+        {rotatingWords[index]}
+      </span>
+    </span>
+  );
+};
 
 const Hero = ({ scrollToOffer }) => {
-    return (
-        <section className="relative pt-28 sm:pt-32 pb-12 px-4 sm:px-6 bg-neutral-cream dark:bg-slate-900 overflow-hidden transition-colors duration-300">
-            {/* Background Decor */}
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-                <div className="absolute top-[-10%] right-[20%] w-[600px] h-[600px] bg-primary/5 dark:bg-primary/10 rounded-full blur-2xl opacity-50" />
-                <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-secondary/10 dark:bg-secondary/20 rounded-full blur-2xl opacity-50" />
+  return (
+    <section
+      id="inicio"
+      className="relative overflow-hidden bg-[#EDF2F7]"
+      style={{ paddingTop: '140px', paddingBottom: '95px' }}
+    >
+      {/* Background radial gradient */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 90% at 100% 38%, #fff4e6 0%, #fff7ed 32%, #edf2f7 72%)',
+        }}
+      />
+
+      <div className="max-w-[1280px] mx-auto px-5 relative z-10">
+        <div className="grid lg:grid-cols-[42%_58%] gap-12 lg:gap-16 items-center">
+
+          {/* ── Left: copy ── */}
+          <div>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[10px] bg-orange-50 border border-orange-100 mb-6">
+              <span className="w-1.5 h-1.5 rounded-[10px] bg-orange-500 animate-pulse" />
+              <span className="text-[12px] font-bold text-orange-600 uppercase tracking-wider">
+                Com API Oficial Shopee
+              </span>
             </div>
 
-            <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
+            <h1 className="text-[44px] sm:text-[51px] font-semibold text-[#1D2939] leading-[1.03] mb-6">
+              Monitore seus{' '}
+              <RotatingWord />
+              <br />
+              com clareza de receita
+            </h1>
 
-                {/* Eyebrow Label */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-900/30 border border-orange-100 dark:border-orange-800 text-primary dark:text-orange-300 text-xs font-bold uppercase tracking-wider mb-8 shadow-sm">
-                    <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                    </span>
-                    Plataforma de Alta Performance
-                </div>
+            <p className="text-[16px] text-[#667085] leading-[1.55] mb-8 max-w-[510px]">
+              O AfiliadoDash centraliza Shopee, Meta Ads, WhatsApp e Instagram em uma visão única
+              para você decidir rápido, cortar desperdício e escalar o que realmente dá lucro.
+            </p>
 
-                {/* Headline - Centered */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display text-neutral-darkCharcoal dark:text-white tracking-tight mb-6 sm:mb-8 max-w-5xl font-medium">
-                    Domine seus <span className="font-semibold text-gray-900 dark:text-gray-100">Números</span> e <br className="hidden md:block" />
-                    <span className="font-semibold text-orange-600">Escalabilidade Real.</span>
-                </h1>
-
-                <p className="text-base sm:text-lg md:text-xl text-neutral-charcoal/80 dark:text-gray-400 mb-8 sm:mb-12 leading-relaxed max-w-2xl font-normal mx-auto">
-                    Deixe de lado o "feeling" e as planilhas manuais. O <strong className="text-neutral-darkCharcoal dark:text-white font-semibold">Afiliado Dash</strong> entrega rastreamento granular de SubIDs, análise de latência e ROI verdadeiro para afiliados profissionais.
-                </p>
-
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full mb-16">
-                    <PrimaryButton onClick={scrollToOffer} className="w-auto shadow-orange-glow" pulsing={true}>
-                        Garantir meu acesso
-                    </PrimaryButton>
-                    <SecondaryButton onClick={scrollToOffer} className="hidden sm:inline-flex w-auto text-base px-10">
-                        Ver Planos
-                    </SecondaryButton>
-                </div>
-
-                {/* Dashboard Preview - Centered and Large */}
-                <div id="dashboard-preview" className="w-full max-w-5xl relative perspective-1000 mx-auto">
-                    {/* Decorative Elements behind image */}
-                    <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-gradient-to-b from-orange-500/10 to-transparent blur-2xl pointer-events-none" />
-
-                    <div className="relative transform hover:scale-[1.01] transition-transform duration-700 ease-out">
-                        <DashboardPreview />
-                    </div>
-                </div>
-
-                {/* Trust Signals - Centered Below Image */}
-                <div className="mt-8 sm:mt-12 flex items-center justify-center gap-3 text-xs sm:text-sm text-neutral-mediumGray dark:text-gray-400">
-                    <div className="flex -space-x-3">
-                        {['R', 'A', 'M'].map((letter, i) => (
-                            <div key={i} className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white dark:border-slate-800 bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-xs font-bold text-orange-600 dark:text-orange-400">
-                                {letter}
-                            </div>
-                        ))}
-                    </div>
-                    <p>Junte-se a <strong className="text-neutral-darkCharcoal dark:text-white">afiliados que dominam seus números</strong>.</p>
-                </div>
+            <div className="flex flex-col sm:flex-row gap-3 mb-8">
+              <button
+                onClick={scrollToOffer}
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-bold text-white bg-orange-500 hover:bg-orange-600 rounded-[10px] shadow-[0_8px_24px_rgba(249,115,22,0.30)] hover:-translate-y-0.5 transition-all duration-200"
+              >
+                Criar conta
+                <ArrowRight size={16} />
+              </button>
+              <a
+                href="https://app.afiliadodash.com/login"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-semibold text-slate-700 border border-slate-300 rounded-[10px] hover:border-orange-300 hover:text-orange-500 transition-all duration-200"
+              >
+                Já tenho conta
+              </a>
             </div>
-        </section>
-    );
+
+            {/* Integration logos — staggered left-to-right entrance */}
+            <div className="flex items-center gap-2.5 mb-8">
+              <span className="text-[11px] text-slate-400 font-medium whitespace-nowrap mr-1">
+                Integra com
+              </span>
+              {integrations.map((logo, i) => (
+                <div
+                  key={logo.alt}
+                  title={logo.alt}
+                  className="w-10 h-10 rounded-xl bg-white border border-slate-200 shadow-[0_2px_8px_rgba(0,0,0,0.08)] flex items-center justify-center"
+                  style={{
+                    animation: 'logoFadeIn 0.45s ease both',
+                    animationDelay: `${i * 180}ms`,
+                    opacity: 0,
+                  }}
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="w-6 h-6 object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-6">
+              <span className="text-[16px] font-black text-orange-500">R$2M+</span>
+              <span className="text-[12px] text-slate-400 -ml-4">comissões rastreadas</span>
+              <span className="text-[16px] font-black text-orange-500">4.9/5</span>
+              <span className="text-[12px] text-slate-400 -ml-4">avaliação média</span>
+            </div>
+          </div>
+
+          {/* ── Right: dashboard screenshot ── */}
+          <div className="relative" style={{ paddingBottom: '8px', paddingRight: '16px' }}>
+
+            {/* Main dashboard screenshot — floats gently */}
+            <div className="animate-float relative z-10 rounded-[20px] overflow-hidden border border-white/70 bg-white shadow-[0_28px_90px_rgba(12,34,74,0.16)]">
+              <img
+                src="/images/afiliado-dash-sessao-1.png"
+                alt="Dashboard do AfiliadoDash"
+                className="w-full h-auto block"
+                loading="eager"
+              />
+
+              {/* Frosted glass corner — small, covers just enough */}
+              <div
+                aria-hidden="true"
+                className="absolute bottom-0 left-0 w-[110px] h-[44px] bg-[#E7ECF3]/60 backdrop-blur-md rounded-tr-xl"
+              />
+
+              {/* Tiny metric card on top of the frosted corner */}
+              <div className="absolute bottom-2.5 left-3 z-10 flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-[10px] bg-green-400" />
+                <span className="text-[9px] font-bold text-[#1D2939]">R$ 52.671</span>
+                <span className="text-[8px] text-green-600 font-semibold">+14,3%</span>
+              </div>
+            </div>
+
+            {/* Comissões card — floats top-right */}
+            <div
+              className="absolute z-20 bg-white rounded-2xl border border-slate-100 shadow-[0_14px_38px_rgba(0,0,0,0.12)] px-4 py-3 min-w-[190px]"
+              style={{
+                top: '10%',
+                right: '-12px',
+                animation: 'float 5s ease-in-out infinite 0.3s',
+              }}
+            >
+              {/* Validadas */}
+              <div className="flex items-center gap-2 mb-2.5">
+                <div className="w-6 h-6 rounded-lg bg-green-50 flex items-center justify-center shrink-0">
+                  <CheckCircle2 size={13} className="text-green-500" />
+                </div>
+                <div>
+                  <div className="text-[9px] font-semibold text-slate-400 uppercase leading-none mb-0.5">
+                    Comissões Validadas
+                  </div>
+                  <div className="text-[15px] font-black text-[#1D2939] leading-none">
+                    R$ 18.785<span className="text-[11px] font-bold">,58</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-px bg-slate-100 mb-2.5" />
+
+              {/* A validar */}
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-lg bg-orange-50 flex items-center justify-center shrink-0">
+                  <Clock size={13} className="text-orange-400" />
+                </div>
+                <div>
+                  <div className="text-[9px] font-semibold text-slate-400 uppercase leading-none mb-0.5">
+                    A Validar
+                  </div>
+                  <div className="text-[15px] font-black text-[#1D2939] leading-none">
+                    R$ 3.842<span className="text-[11px] font-bold">,20</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bar chart card — floats bottom-right */}
+            <div
+              className="absolute z-20 bg-white rounded-2xl border border-slate-100 shadow-[0_14px_38px_rgba(0,0,0,0.12)] px-4 py-3 w-[178px]"
+              style={{
+                bottom: '14%',
+                right: '-12px',
+                animation: 'float 5.4s ease-in-out infinite 0.8s',
+              }}
+            >
+              <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                Comissão por Dia
+              </div>
+              <div className="flex items-end gap-1 h-10">
+                {[24, 38, 30, 44, 40, 52, 48, 58].map((height, i) => (
+                  <span
+                    key={i}
+                    className="flex-1 rounded-sm bg-gradient-to-t from-[#22c55e] to-[#4ade80]"
+                    style={{ height: `${height}%` }}
+                  />
+                ))}
+              </div>
+              <div className="mt-1.5 text-[11px] font-bold text-[#16A34A]">+ R$ 2.384 hoje</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Hero;

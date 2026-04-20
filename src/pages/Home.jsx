@@ -1,31 +1,37 @@
 import React, { Suspense, lazy } from 'react';
-
-// Static Imports (First Contentful Paint components)
 import Hero from '../components/sections/Hero';
 
-// Lazy Imports (Code Splitting for performance optimization)
-const PainSection = lazy(() => import('../components/sections/PainSection'));
-const Features = lazy(() => import('../components/sections/Features'));
-const DeepDive = lazy(() => import('../components/sections/DeepDive'));
+const DarkFeatures = lazy(() => import('../components/sections/DarkFeatures'));
+const FeatureHighlightsSection = lazy(() => import('../components/sections/FeatureHighlightsSection'));
+const MetaAdsSection = lazy(() => import('../components/sections/MetaAdsSection'));
+const GroupsSection = lazy(() => import('../components/sections/GroupsSection'));
 const Offer = lazy(() => import('../components/sections/Offer'));
+const FinalCTA = lazy(() => import('../components/sections/FinalCTA'));
 const FAQ = lazy(() => import('../components/sections/FAQ'));
 
-export default function Home() {
-    const scrollToOffer = () => {
-        const offerElement = document.getElementById('oferta');
-        if (offerElement) {
-            offerElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+const SectionLoader = () => (
+  <div className="py-16 flex justify-center items-center">
+    <div className="w-7 h-7 border-2 border-orange-500/30 border-t-orange-500 rounded-full animate-spin" />
+  </div>
+);
 
-    return (
-        <>
-            <Hero scrollToOffer={scrollToOffer} />
-            <PainSection />
-            <Features />
-            <DeepDive />
-            <Offer />
-            <FAQ />
-        </>
-    );
+export default function Home() {
+  const scrollToOffer = () => {
+    document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <>
+      <Hero scrollToOffer={scrollToOffer} />
+      <Suspense fallback={<SectionLoader />}>
+        <DarkFeatures />
+        <FeatureHighlightsSection />
+        <MetaAdsSection />
+        <GroupsSection />
+        <Offer />
+        <FinalCTA scrollToOffer={scrollToOffer} />
+        <FAQ />
+      </Suspense>
+    </>
+  );
 }

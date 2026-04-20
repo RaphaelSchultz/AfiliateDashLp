@@ -1,0 +1,91 @@
+/**
+ * Planos de assinatura da seção de oferta.
+ */
+export const plans = [
+  {
+    id: 'start',
+    name: 'Start',
+    price: 'R$ 97,00',
+    billingLabel: 'por mês',
+    features: [
+      { text: 'Dashboard Completo', included: true },
+      { text: '10 Links de redirecionamento', included: true },
+      { text: 'Integração com API Shopee', included: true },
+      { text: 'Integração com Metas Ads', included: true },
+      { text: 'Campanhas ilimitadas', included: true },
+      { text: '1 conta de anuncios', included: true },
+      { text: '1.000 pedidos trackeados do meta', included: true },
+      { text: 'Integração com WhatsApp', included: true },
+      { text: '5 grupos de whatsapp', included: true },
+      { text: '1 Número de whatsapp*', included: true },
+      { text: 'Tracker de vendas por grupo**', included: false },
+    ],
+    notes: [
+      '* R$ 129,00 por número adicional',
+      '** R$ 50,00 adicional por tracker de vendas',
+    ],
+    ctaLabel: 'Assinar',
+    ctaHref: 'https://buy.stripe.com/14AfZjc3sfpq6xHgm21Nu05',
+  },
+  {
+    id: 'light',
+    name: 'Light',
+    price: 'R$ 147,00',
+    billingLabel: 'por mês',
+    features: [
+      { text: 'Tudo do plano Start', included: true },
+      { text: '30 Links de redirecionamento', included: true },
+      { text: '2 conta de anuncios', included: true },
+      { text: '3.000 pedidos trackeados do meta', included: true },
+      { text: '10 grupos de WhatsApp', included: true },
+      { text: '1 Número de WhatsApp*', included: true },
+      { text: 'Tracker de vendas por grupo**', included: false },
+    ],
+    notes: [
+      '* R$ 129,00 por número adicional',
+      '** R$ 50,00 adicional por tracker de vendas',
+    ],
+    ctaLabel: 'Assinar',
+    ctaHref: 'https://buy.stripe.com/bJefZjaZo0uwf4d9XE1Nu06',
+  },
+  {
+    id: 'plus',
+    name: 'Plus',
+    price: 'R$ 247,00',
+    billingLabel: 'por mês',
+    features: [
+      { text: 'Tudo do plano Light', included: true },
+      { text: '50 Links de redirecionamento', included: true },
+      { text: '5 conta de anuncios', included: true },
+      { text: '10.000 pedidos trackeados do meta', included: true },
+      { text: '30 grupos de WhatsApp', included: true },
+      { text: '1 Número de WhatsApp*', included: true },
+      { text: 'Tracker de vendas por grupo', included: true },
+    ],
+    notes: [
+      '* R$ 129,00 por número adicional',
+    ],
+    ctaLabel: 'Assinar',
+    ctaHref: 'https://buy.stripe.com/28EeVf2sSb9af4d0n41Nu07',
+  },
+  {
+    id: 'max',
+    name: 'Max',
+    price: 'R$ 447,00',
+    billingLabel: 'por mês',
+    features: [
+      { text: 'Tudo do plano Plus', included: true },
+      { text: 'Links de redirecionamento ilimitados', included: true },
+      { text: '5 conta de anuncios', included: true },
+      { text: '25.000 pedidos trackeados do meta', included: true },
+      { text: 'Grupos de WhatsApp ilimitados', included: true },
+      { text: '2 Número de WhatsApp*', included: true },
+      { text: 'Tracker de vendas por grupo', included: true },
+    ],
+    notes: [
+      '* R$ 109,00 por número adicional',
+    ],
+    ctaLabel: 'Assinar',
+    ctaHref: 'https://buy.stripe.com/28EcN7gjIdhicW58TA1Nu08',
+  },
+];

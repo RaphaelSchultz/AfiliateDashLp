@@ -36,10 +36,10 @@ export const MGMLogoLike = ({ className = "w-10 h-10" }) => (
     <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
         {/* Main Shape: Rounded Square with Bar Chart cutouts or overlays */}
         {/* Actually, let's just draw the bars and the axis as a thick stroke for that "Bold" feel */}
-        <path d="M8 8V28C8 30.2091 9.79086 32 12 32H32" stroke="#FF6B35" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M14 24V18" stroke="#FF6B35" strokeWidth="3.5" strokeLinecap="round" />
-        <path d="M20 24V12" stroke="#FF6B35" strokeWidth="3.5" strokeLinecap="round" />
-        <path d="M26 24V16" stroke="#FF6B35" strokeWidth="3.5" strokeLinecap="round" />
+        <path d="M8 8V28C8 30.2091 9.79086 32 12 32H32" stroke="#F97316" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14 24V18" stroke="#F97316" strokeWidth="3.5" strokeLinecap="round" />
+        <path d="M20 24V12" stroke="#F97316" strokeWidth="3.5" strokeLinecap="round" />
+        <path d="M26 24V16" stroke="#F97316" strokeWidth="3.5" strokeLinecap="round" />
     </svg>
 );
 
