@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ArrowRight, CheckCircle2, Clock } from 'lucide-react';
-
-const rotatingWords = ['SubIDs', 'Comissões', 'Campanhas', 'ROAS', 'Grupos'];
 
 const integrations = [
   { src: '/images/shopee-logo.webp',    alt: 'Shopee'    },
@@ -9,30 +7,6 @@ const integrations = [
   { src: '/images/Instagram_logo.svg',  alt: 'Instagram' },
   { src: '/images/whatsapp_logo.webp',  alt: 'WhatsApp'  },
 ];
-
-const RotatingWord = () => {
-  const [index, setIndex] = useState(0);
-  const [animClass, setAnimClass] = useState('word-in');
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimClass('word-out');
-      setTimeout(() => {
-        setIndex((prev) => (prev + 1) % rotatingWords.length);
-        setAnimClass('word-in');
-      }, 220);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <span className="relative inline-block overflow-hidden align-bottom" style={{ minWidth: '185px' }}>
-      <span key={rotatingWords[index]} className={`text-orange-500 ${animClass}`} style={{ display: 'inline-block' }}>
-        {rotatingWords[index]}
-      </span>
-    </span>
-  );
-};
 
 const Hero = ({ scrollToOffer }) => {
   return (
@@ -55,23 +29,14 @@ const Hero = ({ scrollToOffer }) => {
 
           {/* ── Left: copy ── */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[10px] bg-orange-50 border border-orange-100 mb-6">
-              <span className="w-1.5 h-1.5 rounded-[10px] bg-orange-500 animate-pulse" />
-              <span className="text-[12px] font-bold text-orange-600 uppercase tracking-wider">
-                Com API Oficial Shopee
-              </span>
-            </div>
-
-            <h1 className="text-[44px] sm:text-[51px] font-semibold text-[#1D2939] leading-[1.03] mb-6">
-              Monitore seus{' '}
-              <RotatingWord />
-              <br />
-              com clareza de receita
+            <h1 className="text-[24px] sm:text-[32px] lg:text-[40px] font-semibold text-[#1D2939] leading-[1.08] mb-6">
+              <span className="block whitespace-nowrap">A plataforma</span>
+              <span className="block whitespace-nowrap">mais completa</span>
+              <span className="block whitespace-nowrap">para afiliadas da Shopee</span>
             </h1>
 
             <p className="text-[16px] text-[#667085] leading-[1.55] mb-8 max-w-[510px]">
-              O AfiliadoDash centraliza Shopee, Meta Ads, WhatsApp e Instagram em uma visão única
-              para você decidir rápido, cortar desperdício e escalar o que realmente dá lucro.
+              Tudo que você precisa para crescer como afiliada da Shopee em um só ecossistema.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-8">
