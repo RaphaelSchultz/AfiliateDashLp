@@ -2,52 +2,144 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-    return (
-        <footer className="bg-neutral-cream dark:bg-slate-900 text-neutral-charcoal dark:text-gray-400 font-sans relative mt-auto transition-colors duration-300">
-            <div className="h-px w-full bg-neutral-warmBeige dark:bg-primary/50 mb-10"></div>
+  const statusPills = [
+    '99.9% de uptime',
+  ];
 
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
-                    <div>
-                        <h3 className="text-neutral-darkCharcoal dark:text-white text-xl font-bold mb-4 font-display">Afiliado Dash</h3>
-                        <p className="text-sm leading-relaxed max-w-xs">
-                            A plataforma completa para gestão e análise de links e vendas para afiliados.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h4 className="text-neutral-darkCharcoal dark:text-white text-base font-semibold mb-5">Suporte</h4>
-                        <ul className="space-y-2.5">
-                            <li><a href="/ajuda" className="text-sm hover:text-primary transition-colors">Central de Ajuda</a></li>
-                            <li><a href="/contato" className="text-sm hover:text-primary transition-colors">Contato</a></li>
-                            <li><a href="/tutoriais" className="text-sm hover:text-primary transition-colors">Tutoriais</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="text-neutral-darkCharcoal dark:text-white text-base font-semibold mb-5">Legal</h4>
-                        <ul className="space-y-2.5">
-                            <li><Link to="/termos-de-uso" className="text-sm hover:text-primary transition-colors">Termos de Uso</Link></li>
-                            <li><Link to="/politica-de-privacidade" className="text-sm hover:text-primary transition-colors">Política de Privacidade</Link></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="text-neutral-darkCharcoal dark:text-white text-base font-semibold mb-5">Redes Sociais</h4>
-                        <div className="flex gap-4">
-                            <a href="https://instagram.com/afiliadodash" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-neutral-darkCharcoal dark:text-white hover:opacity-80 transition-opacity">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="border-t border-neutral-warmBeige dark:border-white/10 py-8 text-center">
-                    <p className="text-sm">Afiliado Dash · © 2026 · Todos os direitos reservados.</p>
-                </div>
+  return (
+    <footer className="bg-[#06122B] text-white/70 border-t border-white/10">
+      <div className="max-w-[1120px] mx-auto px-5 pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <div className="mb-5">
+              <img
+                src="https://app.afiliadodash.com/assets/logo-BN3UZtY6.png"
+                alt="AfiliadoDash"
+                className="h-8 w-auto"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <span className="text-[19px] font-black text-white hidden">
+                Afiliado<span className="text-orange-500">Dash</span>
+              </span>
             </div>
-        </footer>
-    );
+            <p className="text-[14px] leading-relaxed max-w-[270px] text-white/55">
+              A plataforma completa para gestão e análise de comissões, links e grupos de WhatsApp para afiliados Shopee.
+            </p>
+            <div className="flex flex-wrap items-center gap-2 mt-6">
+              {statusPills.map((pill) => (
+                <span
+                  key={pill}
+                  className="inline-flex items-center rounded-full border border-green-500/40 bg-green-500/10 px-3 py-1 text-[11px] font-semibold text-green-300"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 mr-2" />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Product */}
+          <div>
+            <h4 className="text-white text-[15px] font-semibold mb-5">Produto</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="#funcionalidades" className="text-[14px] text-white/70 hover:text-orange-400 transition-colors">Funcionalidades</a>
+              </li>
+              <li>
+                <a href="#detalhes" className="text-[14px] text-white/70 hover:text-orange-400 transition-colors">Diferenciais</a>
+              </li>
+              <li>
+                <a href="#oferta" className="text-[14px] text-white/70 hover:text-orange-400 transition-colors">Preços</a>
+              </li>
+              <li>
+                <a href="#faq" className="text-[14px] text-white/70 hover:text-orange-400 transition-colors">Roadmap</a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-white text-[15px] font-semibold mb-5">Empresa</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="#inicio" className="text-[14px] text-white/70 hover:text-orange-400 transition-colors">Sobre Nós</a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com/afiliadodash"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[14px] text-white/70 hover:text-orange-400 transition-colors"
+                >
+                  Contato
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h4 className="text-white text-[15px] font-semibold mb-5">Suporte</h4>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="https://instagram.com/afiliadodash"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[14px] text-white/70 hover:text-orange-400 transition-colors"
+                >
+                  Documentação
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com/afiliadodash"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[14px] text-white/70 hover:text-orange-400 transition-colors"
+                >
+                  Central de Ajuda
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://status.afiliadodash.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[14px] text-white/70 hover:text-orange-400 transition-colors"
+                >
+                  Status do Sistema
+                </a>
+              </li>
+              <li>
+                <Link to="/terms" className="text-[14px] text-white/70 hover:text-orange-400 transition-colors">
+                  Termos de Uso
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <p className="text-[12px] text-white/45">
+            © 2026 AfiliadoDash. Todos os direitos reservados.
+          </p>
+          <div className="flex items-center gap-5 text-[12px] text-white/45">
+            <Link to="/privacy" className="hover:text-orange-400 transition-colors">
+              Privacidade
+            </Link>
+            <Link to="/terms" className="hover:text-orange-400 transition-colors">
+              Termos
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
