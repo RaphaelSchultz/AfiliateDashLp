@@ -126,7 +126,7 @@ const FeatureHighlightsSection = () => {
 
       <div className="max-w-[1054px] mx-auto px-5 relative z-10">
         <div className="grid lg:grid-cols-[1.15fr_auto] gap-8 lg:gap-10 items-end mb-12">
-          <h2 className="text-[24px] md:text-[32px] lg:text-[36px] font-semibold text-white leading-[1.1] tracking-tight max-w-[680px]">
+          <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-semibold text-white leading-[1.08] tracking-tight max-w-[680px]">
             O que faz o <span className="text-orange-400">Afiliado Dash</span> ser único e indispensável!
           </h2>
 

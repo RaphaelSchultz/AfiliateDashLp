@@ -96,7 +96,7 @@ const GroupsSection = () => {
               <span className="text-[11px] font-bold text-orange-600 uppercase tracking-wider">Grupos de WhatsApp</span>
             </div>
 
-            <h2 className="text-[42px] font-semibold text-[#1D2939] leading-[1.1] mb-5">
+            <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-semibold text-[#1D2939] leading-[1.08] mb-5">
               Seus grupos no
               <br />
               <span className="text-orange-500">piloto automático</span>

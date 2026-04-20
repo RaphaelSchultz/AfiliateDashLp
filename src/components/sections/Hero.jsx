@@ -36,7 +36,7 @@ const Hero = ({ scrollToOffer }) => {
             </h1>
 
             <p className="text-[16px] text-[#667085] leading-[1.55] mb-8 max-w-[510px]">
-              Tudo que você precisa para crescer como afiliada da Shopee em um só ecossistema.
+              Tudo que você precisa para crescer como afiliada da Shopee em um só ecossistema integrado e automático.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-8">

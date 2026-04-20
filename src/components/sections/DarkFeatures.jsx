@@ -9,7 +9,7 @@ const DarkFeatures = () => {
     >
       <div className="max-w-[1054px] mx-auto px-5 relative z-10">
         <div className="text-center mb-10">
-          <h2 className="text-[33px] md:text-[51px] font-semibold text-[#1D2939] leading-[1.04] mb-5">
+          <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-semibold text-[#1D2939] leading-[1.08] mb-5">
             Foi exatamente por viver os
             <br />
             mesmos problemas que você que

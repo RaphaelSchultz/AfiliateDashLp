@@ -116,7 +116,7 @@ const MetaAdsSection = () => {
               <span className="text-[11px] font-bold text-orange-400 uppercase tracking-wider">Meta Ads Integrado</span>
             </div>
 
-            <h2 className="text-[42px] font-semibold text-white leading-[1.1] mb-5">
+            <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-semibold text-white leading-[1.08] mb-5">
               Veja seu ROI real,
               <br />
               <span className="text-orange-400">campanha por campanha</span>

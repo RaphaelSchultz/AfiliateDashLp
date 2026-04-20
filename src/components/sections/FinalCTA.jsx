@@ -8,7 +8,7 @@ const FinalCTA = ({ scrollToOffer }) => {
       style={{ background: '#EFF8FF', paddingTop: '90px', paddingBottom: '90px' }}
     >
       <div className="max-w-[1054px] mx-auto px-5 text-center">
-        <h2 className="text-[45px] font-semibold text-[#1D2939] leading-[1.1] mb-5">
+        <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-semibold text-[#1D2939] leading-[1.08] mb-5">
           Pronto para dominar seus números?
         </h2>
         <p className="text-[16px] text-[#475467] max-w-[500px] mx-auto leading-relaxed mb-8">

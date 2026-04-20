@@ -58,7 +58,7 @@ const FAQ = () => {
           {/* Left heading */}
           <div className="lg:sticky lg:top-24">
             <span className="text-[11px] font-bold text-orange-500 uppercase tracking-wider block mb-3">Tira-dúvidas</span>
-            <h2 className="text-[42px] font-semibold text-[#1D2939] leading-[1.1] mb-5">
+            <h2 className="text-[24px] sm:text-[32px] lg:text-[40px] font-semibold text-[#1D2939] leading-[1.08] mb-5">
               Perguntas
               <br />
               frequentes
