@@ -1,110 +1,127 @@
-import React, { useState } from 'react';
-import { BarChart3, Menu, X } from 'lucide-react';
-import MGMLogoLike from '../ui/Logo';
-import ThemeToggle from '../ui/ThemeToggle';
-
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Header = ({ scrollToOffer }) => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-    React.useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    return (
-        <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-neutral-warmBeige dark:border-slate-800 py-3' : 'bg-transparent py-5'
-            }`}>
-            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+  const handleGoHome = () => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-                {/* Logo Section */}
-                <Link to="/" className="flex items-center gap-2 group">
-                    <div className="flex items-center justify-center transform group-hover:scale-105 transition-transform">
-                        <MGMLogoLike className="w-9 h-9" />
-                    </div>
-                    <span className={`text-xl font-bold tracking-tight font-display transition-colors ${isScrolled ? 'text-neutral-darkCharcoal dark:text-white' : 'text-neutral-darkCharcoal dark:text-white'}`}>
-                        Afiliado<span className="text-primary">Dash</span>
-                    </span>
-                </Link>
+  const navLinks = [
+    { label: 'Início', action: handleGoHome },
+    { label: 'Funcionalidades', action: () => document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' }) },
+    { label: 'Planos', action: scrollToOffer },
+    { label: 'FAQ', action: () => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }) },
+  ];
 
-                {/* Centered Navigation - Desktop */}
-                <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-                    <button
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                        className="text-sm font-medium text-neutral-charcoal hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
-                    >
-                        Início
-                    </button>
-                    <button
-                        onClick={() => document.getElementById('dashboard-preview')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="text-sm font-medium text-neutral-charcoal hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
-                    >
-                        Analytics
-                    </button>
-                    <button
-                        onClick={scrollToOffer}
-                        className="text-sm font-medium text-neutral-charcoal hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
-                    >
-                        Preços
-                    </button>
-                </div>
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-xl shadow-[0_1px_20px_rgba(0,0,0,0.06)]'
+          : 'bg-white/60 backdrop-blur-lg'
+      }`}
+    >
+      <div className="max-w-[1054px] mx-auto px-5 flex items-center justify-between h-[75px]">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 shrink-0">
+          <img
+            src="https://app.afiliadodash.com/assets/logo-BN3UZtY6.png"
+            alt="AfiliadoDash"
+            className="h-8 w-auto"
+            onError={(e) => {
+              e.target.style.display = 'none';
+            }}
+          />
+          <span className="text-[18px] font-black tracking-tight text-slate-900">
+            Afiliado<span className="text-orange-500">Dash</span>
+          </span>
+        </Link>
 
-                {/* Right Actions */}
-                <div className="hidden md:flex items-center gap-4">
-                    <ThemeToggle />
-                    <a
-                        href="https://app.afiliadodash.com/login"
-                        className="text-neutral-darkCharcoal hover:text-primary dark:text-white dark:hover:text-primary font-semibold text-sm transition-colors"
-                    >
-                        Entrar
-                    </a>
-                    <button
-                        onClick={scrollToOffer}
-                        style={{ borderRadius: '12px' }}
-                        className="px-6 py-2 bg-orange-600 hover:opacity-90 text-white text-sm font-bold transition-opacity shadow-soft-md"
-                    >
-                        Ver Planos
-                    </button>
-                </div>
-
-                {/* Mobile Toggle */}
-                <button className="md:hidden text-neutral-charcoal" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                    {isMobileMenuOpen ? <X /> : <Menu />}
-                </button>
-            </div>
-
-            {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-                <div className="md:hidden bg-white dark:bg-slate-900 border-b border-neutral-warmBeige dark:border-slate-800 p-4 flex flex-col gap-4 relative z-50 shadow-soft-xl animate-in slide-in-from-top-2">
-                    <button
-                        onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMobileMenuOpen(false); }}
-                        className="w-full text-left py-2 text-neutral-charcoal dark:text-gray-200 hover:text-primary font-medium block"
-                    >
-                        Início
-                    </button>
-                    <button
-                        onClick={() => { document.getElementById('dashboard-preview')?.scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }}
-                        className="w-full text-left py-2 text-neutral-charcoal dark:text-gray-200 hover:text-primary font-medium block"
-                    >
-                        Analytics
-                    </button>
-                    <button
-                        onClick={() => { scrollToOffer(); setIsMobileMenuOpen(false); }}
-                        className="w-full text-left py-2 text-neutral-charcoal dark:text-gray-200 hover:text-primary font-medium block"
-                    >
-                        Preços
-                    </button>
-                    <div className="h-px bg-neutral-100 dark:bg-slate-800 my-2" />
-                    <a href="https://app.afiliadodash.com/login" className="w-full text-left py-2 text-neutral-charcoal dark:text-gray-200 hover:text-primary font-medium block">Entrar</a>
-                </div>
-            )}
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <button
+              key={link.label}
+              onClick={link.action}
+              className="text-[15px] font-semibold text-slate-600 hover:text-orange-500 transition-colors duration-200"
+            >
+              {link.label}
+            </button>
+          ))}
         </nav>
-    );
+
+        {/* Desktop CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="https://app.afiliadodash.com/login"
+            className="text-[14px] font-semibold text-slate-600 hover:text-orange-500 transition-colors"
+          >
+            Entrar
+          </a>
+          <button
+            onClick={scrollToOffer}
+            className="px-5 py-2.5 text-[14px] font-bold text-white bg-orange-500 hover:bg-orange-600 rounded-[10px] shadow-[0_4px_14px_rgba(249,115,22,0.30)] hover:-translate-y-0.5 transition-all duration-200"
+          >
+            Começar agora
+          </button>
+        </div>
+
+        {/* Mobile Toggle */}
+        <button
+          className="md:hidden text-slate-700 p-1"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Menu"
+        >
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-slate-100 px-5 py-4 flex flex-col gap-1">
+          {navLinks.map((link) => (
+            <button
+              key={link.label}
+              onClick={() => { link.action(); setIsMobileMenuOpen(false); }}
+              className="w-full text-left py-3 text-[15px] font-semibold text-slate-700 hover:text-orange-500 transition-colors border-b border-slate-50 last:border-0"
+            >
+              {link.label}
+            </button>
+          ))}
+          <div className="pt-3 flex flex-col gap-2">
+            <a
+              href="https://app.afiliadodash.com/login"
+              className="text-center py-3 text-[14px] font-semibold text-slate-700"
+            >
+              Entrar
+            </a>
+            <button
+              onClick={() => { scrollToOffer(); setIsMobileMenuOpen(false); }}
+              className="py-3 text-[14px] font-bold text-white bg-orange-500 rounded-[10px]"
+            >
+              Começar agora
+            </button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
 };
 
 export default Header;

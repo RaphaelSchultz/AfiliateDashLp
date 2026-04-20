@@ -27,8 +27,8 @@ export default function App() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path="obrigado" element={<ThankYou />} />
-            <Route path="termos-de-uso" element={<TermsOfUse />} />
-            <Route path="politica-de-privacidade" element={<PrivacyPolicy />} />
+            <Route path="terms" element={<TermsOfUse />} />
+            <Route path="privacy" element={<PrivacyPolicy />} />
           </Route>
           <Route path="/lp-newversion" element={<LpNewVersion />} />
           <Route path="/lp-newversion-2" element={<LpNewVersion2 />} />
