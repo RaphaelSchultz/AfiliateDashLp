@@ -25,7 +25,7 @@ export const plans = [
       '** R$ 50,00 adicional por tracker de vendas',
     ],
     ctaLabel: 'Assinar',
-    ctaHref: 'https://buy.stripe.com/14AfZjc3sfpq6xHgm21Nu05',
+    ctaHref: 'https://pay.cakto.com.br/vu4ar8f',
   },
   {
     id: 'light',
@@ -46,7 +46,7 @@ export const plans = [
       '** R$ 50,00 adicional por tracker de vendas',
     ],
     ctaLabel: 'Assinar',
-    ctaHref: 'https://buy.stripe.com/bJefZjaZo0uwf4d9XE1Nu06',
+    ctaHref: 'https://pay.cakto.com.br/v9h9ytm',
   },
   {
     id: 'plus',
@@ -66,7 +66,7 @@ export const plans = [
       '* R$ 129,00 por número adicional',
     ],
     ctaLabel: 'Assinar',
-    ctaHref: 'https://buy.stripe.com/28EeVf2sSb9af4d0n41Nu07',
+    ctaHref: 'https://pay.cakto.com.br/3b589ia',
   },
   {
     id: 'max',
@@ -86,6 +86,6 @@ export const plans = [
       '* R$ 109,00 por número adicional',
     ],
     ctaLabel: 'Assinar',
-    ctaHref: 'https://buy.stripe.com/28EcN7gjIdhicW58TA1Nu08',
+    ctaHref: 'https://pay.cakto.com.br/twmcqny',
   },
 ];
