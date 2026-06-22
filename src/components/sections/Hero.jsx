@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, Clock } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Clock } from 'lucide-react';
 
 const integrations = [
   { src: '/images/shopee-logo.webp',    alt: 'Shopee'    },
@@ -8,7 +8,7 @@ const integrations = [
   { src: '/images/whatsapp_logo.webp',  alt: 'WhatsApp'  },
 ];
 
-const Hero = () => {
+const Hero = ({ scrollToOffer, showSignupCtas = true }) => {
   return (
     <section
       id="inicio"
@@ -38,6 +38,24 @@ const Hero = () => {
             <p className="text-[16px] text-[#667085] leading-[1.55] mb-8 max-w-[510px]">
               Tudo que você precisa para crescer como afiliada da Shopee em um só ecossistema integrado e automático.
             </p>
+
+            {showSignupCtas && (
+              <div className="flex flex-col sm:flex-row gap-3 mb-8">
+                <button
+                  onClick={scrollToOffer}
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-bold text-white bg-orange-500 hover:bg-orange-600 rounded-[10px] shadow-[0_8px_24px_rgba(249,115,22,0.30)] hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Criar conta
+                  <ArrowRight size={16} />
+                </button>
+                <a
+                  href="https://app.afiliadodash.com/login"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-semibold text-slate-700 border border-slate-300 rounded-[10px] hover:border-orange-300 hover:text-orange-500 transition-all duration-200"
+                >
+                  Já tenho conta
+                </a>
+              </div>
+            )}
 
             {/* Integration logos — staggered left-to-right entrance */}
             <div className="flex items-center gap-2.5 mb-8">

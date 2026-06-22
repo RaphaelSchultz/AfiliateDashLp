@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const Header = ({ scrollToOffer }) => {
+const Header = ({ scrollToOffer, showSignupCtas = true }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -74,6 +74,14 @@ const Header = ({ scrollToOffer }) => {
           >
             Entrar
           </a>
+          {showSignupCtas && (
+            <button
+              onClick={scrollToOffer}
+              className="px-5 py-2.5 text-[14px] font-bold text-white bg-orange-500 hover:bg-orange-600 rounded-[10px] shadow-[0_4px_14px_rgba(249,115,22,0.30)] hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Começar agora
+            </button>
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -105,6 +113,14 @@ const Header = ({ scrollToOffer }) => {
             >
               Entrar
             </a>
+            {showSignupCtas && (
+              <button
+                onClick={() => { scrollToOffer(); setIsMobileMenuOpen(false); }}
+                className="py-3 text-[14px] font-bold text-white bg-orange-500 rounded-[10px]"
+              >
+                Começar agora
+              </button>
+            )}
           </div>
         </div>
       )}

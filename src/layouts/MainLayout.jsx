@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 const LoadingData = () => (
     <div className="py-20 flex justify-center items-center">
@@ -10,6 +10,9 @@ const LoadingData = () => (
 );
 
 const MainLayout = () => {
+    const location = useLocation();
+    const showSignupCtas = location.pathname !== '/pv2';
+
     const scrollToOffer = () => {
         // If we are on the home page, scroll to offer
         // If not, we might need to navigate home first - but for now let's just implement the scroll
@@ -26,7 +29,7 @@ const MainLayout = () => {
         <div className="min-h-screen bg-white text-[#1D2939] selection:bg-orange-500/20 selection:text-orange-900 overflow-x-hidden flex flex-col">
 
 
-            <Header scrollToOffer={scrollToOffer} />
+            <Header scrollToOffer={scrollToOffer} showSignupCtas={showSignupCtas} />
 
             <main className="relative z-10 flex-grow">
                 <Suspense fallback={<LoadingData />}>

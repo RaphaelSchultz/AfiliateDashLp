@@ -5,6 +5,7 @@ import ScrollToTop from './components/layout/ScrollToTop';
 
 // Lazy Imports
 const Home = lazy(() => import('./pages/Home'));
+const Pv2 = lazy(() => import('./pages/Pv2'));
 const ThankYou = lazy(() => import('./pages/ThankYou'));
 const TermsOfUse = lazy(() => import('./pages/TermsOfUse'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
@@ -26,6 +27,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
+            <Route path="pv2" element={<Pv2 />} />
             <Route path="obrigado" element={<ThankYou />} />
             <Route path="terms" element={<TermsOfUse />} />
             <Route path="privacy" element={<PrivacyPolicy />} />

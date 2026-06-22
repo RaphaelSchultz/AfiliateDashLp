@@ -15,21 +15,17 @@ const SectionLoader = () => (
   </div>
 );
 
-export default function Home() {
-  const scrollToOffer = () => {
-    document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
+export default function Pv2() {
   return (
     <>
-      <Hero scrollToOffer={scrollToOffer} />
+      <Hero showSignupCtas={false} />
       <Suspense fallback={<SectionLoader />}>
         <DarkFeatures />
         <FeatureHighlightsSection />
         <MetaAdsSection />
         <GroupsSection />
         <Offer />
-        <FinalCTA scrollToOffer={scrollToOffer} />
+        <FinalCTA showSignupCtas={false} />
         <FAQ />
       </Suspense>
     </>
