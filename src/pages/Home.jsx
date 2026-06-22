@@ -16,20 +16,16 @@ const SectionLoader = () => (
 );
 
 export default function Home() {
-  const scrollToOffer = () => {
-    document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <>
-      <Hero scrollToOffer={scrollToOffer} />
+      <Hero />
       <Suspense fallback={<SectionLoader />}>
         <DarkFeatures />
         <FeatureHighlightsSection />
         <MetaAdsSection />
         <GroupsSection />
         <Offer />
-        <FinalCTA scrollToOffer={scrollToOffer} />
+        <FinalCTA />
         <FAQ />
       </Suspense>
     </>

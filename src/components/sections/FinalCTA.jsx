@@ -1,7 +1,6 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
 
-const FinalCTA = ({ scrollToOffer }) => {
+const FinalCTA = () => {
   return (
     <section
       className="relative overflow-hidden"
@@ -16,13 +15,6 @@ const FinalCTA = ({ scrollToOffer }) => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
-          <button
-            onClick={scrollToOffer}
-            className="inline-flex items-center gap-2 px-8 py-3.5 text-[15px] font-bold text-white bg-orange-500 hover:bg-orange-600 rounded-[10px] shadow-[0_8px_24px_rgba(249,115,22,0.30)] hover:-translate-y-0.5 transition-all duration-200"
-          >
-            Criar conta
-            <ArrowRight size={16} />
-          </button>
           <a
             href="https://app.afiliadodash.com/login"
             className="inline-flex items-center gap-2 px-8 py-3.5 text-[15px] font-semibold text-[#475467] border border-slate-300 rounded-[10px] hover:border-orange-300 hover:text-orange-500 transition-all duration-200"

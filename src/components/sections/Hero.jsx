@@ -1,14 +1,14 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, Clock } from 'lucide-react';
+import { CheckCircle2, Clock } from 'lucide-react';
 
 const integrations = [
   { src: '/images/shopee-logo.webp',    alt: 'Shopee'    },
   { src: '/images/meta-ads-logo.png',   alt: 'Meta Ads'  },
-  { src: '/images/Instagram_logo.svg',  alt: 'Instagram' },
+  { src: '/images/mercado-libre-logo-square.png', alt: 'Mercado Livre' },
   { src: '/images/whatsapp_logo.webp',  alt: 'WhatsApp'  },
 ];
 
-const Hero = ({ scrollToOffer }) => {
+const Hero = () => {
   return (
     <section
       id="inicio"
@@ -39,45 +39,25 @@ const Hero = ({ scrollToOffer }) => {
               Tudo que você precisa para crescer como afiliada da Shopee em um só ecossistema integrado e automático.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 mb-8">
-              <button
-                onClick={scrollToOffer}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-bold text-white bg-orange-500 hover:bg-orange-600 rounded-[10px] shadow-[0_8px_24px_rgba(249,115,22,0.30)] hover:-translate-y-0.5 transition-all duration-200"
-              >
-                Criar conta
-                <ArrowRight size={16} />
-              </button>
-              <a
-                href="https://app.afiliadodash.com/login"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-semibold text-slate-700 border border-slate-300 rounded-[10px] hover:border-orange-300 hover:text-orange-500 transition-all duration-200"
-              >
-                Já tenho conta
-              </a>
-            </div>
-
             {/* Integration logos — staggered left-to-right entrance */}
             <div className="flex items-center gap-2.5 mb-8">
               <span className="text-[11px] text-slate-400 font-medium whitespace-nowrap mr-1">
                 Integra com
               </span>
               {integrations.map((logo, i) => (
-                <div
+                <img
                   key={logo.alt}
+                  src={logo.src}
+                  alt={logo.alt}
                   title={logo.alt}
-                  className="w-10 h-10 rounded-xl bg-white border border-slate-200 shadow-[0_2px_8px_rgba(0,0,0,0.08)] flex items-center justify-center"
+                  className="w-8 h-8 rounded-lg object-contain"
+                  loading="lazy"
                   style={{
                     animation: 'logoFadeIn 0.45s ease both',
                     animationDelay: `${i * 180}ms`,
                     opacity: 0,
                   }}
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="w-6 h-6 object-contain"
-                    loading="lazy"
-                  />
-                </div>
+                />
               ))}
             </div>
 

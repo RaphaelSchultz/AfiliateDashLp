@@ -69,15 +69,6 @@ const DarkFeatures = () => {
           </div>
         </div>
 
-        <div className="text-center mt-12">
-          <button
-            type="button"
-            className="btn-primary"
-            onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Criar conta
-          </button>
-        </div>
       </div>
     </section>
   );
