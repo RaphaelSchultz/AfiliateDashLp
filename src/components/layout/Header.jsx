@@ -7,6 +7,7 @@ const Header = ({ scrollToOffer }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const logoHref = location.pathname === '/pv2' ? '/pv2' : '/';
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -39,7 +40,7 @@ const Header = ({ scrollToOffer }) => {
     >
       <div className="max-w-[1054px] mx-auto px-5 flex items-center justify-between h-[75px]">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 shrink-0">
+        <Link to={logoHref} className="flex items-center gap-2 shrink-0">
           <img
             src="https://app.afiliadodash.com/assets/logo-BN3UZtY6.png"
             alt="AfiliadoDash"
