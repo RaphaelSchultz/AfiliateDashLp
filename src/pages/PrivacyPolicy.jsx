@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 const STORAGE_KEY = 'privacy_policy_locale';
@@ -53,12 +53,22 @@ const normalizeLocale = (value) => ['en', 'en-us'].includes(value?.toLowerCase()
 const PrivacyPolicy = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [locale, setLocale] = useState(() => normalizeLocale(searchParams.get('lang')) || normalizeLocale(localStorage.getItem(STORAGE_KEY)) || 'pt-BR');
-  const document = policy[locale];
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const languageMenuRef = useRef(null);
+  const policyDocument = policy[locale];
 
   useEffect(() => {
     const requested = normalizeLocale(searchParams.get('lang'));
     if (requested && requested !== locale) setLocale(requested);
   }, [locale, searchParams]);
+
+  useEffect(() => {
+    const closeLanguageMenu = (event) => {
+      if (!languageMenuRef.current?.contains(event.target)) setIsLanguageMenuOpen(false);
+    };
+    document.addEventListener('mousedown', closeLanguageMenu);
+    return () => document.removeEventListener('mousedown', closeLanguageMenu);
+  }, []);
 
   const changeLocale = (nextLocale) => {
     setLocale(nextLocale);
@@ -66,22 +76,54 @@ const PrivacyPolicy = () => {
     const params = new URLSearchParams(searchParams);
     params.set('lang', nextLocale === 'en-US' ? 'en' : 'pt-BR');
     setSearchParams(params, { replace: true });
+    setIsLanguageMenuOpen(false);
   };
 
   return (
     <main className="max-w-4xl mx-auto px-6 pt-32 pb-20">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-neutral-darkCharcoal dark:text-white mb-2">{document.title}</h1>
-          <p className="text-sm text-neutral-charcoal/70 dark:text-gray-400">Afiliado Dash · {locale === 'pt-BR' ? 'Última atualização' : 'Last updated'}: {document.updated}</p>
+          <h1 className="text-3xl font-bold text-neutral-darkCharcoal dark:text-white mb-2">{policyDocument.title}</h1>
+          <p className="text-sm text-neutral-charcoal/70 dark:text-gray-400">Afiliado Dash · {locale === 'pt-BR' ? 'Última atualização' : 'Last updated'}: {policyDocument.updated}</p>
         </div>
-        <div aria-label={document.language} role="group" className="inline-flex w-fit rounded-lg border border-neutral-charcoal/15 bg-white/70 p-1 dark:border-white/15 dark:bg-white/5">
-          <button aria-pressed={locale === 'pt-BR'} onClick={() => changeLocale('pt-BR')} className={`rounded-md px-3 py-1.5 text-sm font-medium ${locale === 'pt-BR' ? 'bg-orange-500 text-white' : 'text-neutral-charcoal dark:text-gray-200'}`}>Português</button>
-          <button aria-pressed={locale === 'en-US'} onClick={() => changeLocale('en-US')} className={`rounded-md px-3 py-1.5 text-sm font-medium ${locale === 'en-US' ? 'bg-orange-500 text-white' : 'text-neutral-charcoal dark:text-gray-200'}`}>English</button>
+        <div ref={languageMenuRef} className="relative w-fit">
+          <button
+            aria-expanded={isLanguageMenuOpen}
+            aria-haspopup="menu"
+            aria-label={policyDocument.language}
+            className="inline-flex h-10 items-center gap-2 rounded-xl border border-neutral-charcoal/15 bg-white px-3 text-sm font-medium text-neutral-darkCharcoal shadow-sm transition hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-orange-500/40 dark:border-white/15 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
+            onClick={() => setIsLanguageMenuOpen((open) => !open)}
+            type="button"
+          >
+            <span aria-hidden="true">{locale === 'pt-BR' ? '🇧🇷' : '🇺🇸'}</span>
+            <span className="sr-only">{locale === 'pt-BR' ? 'Português' : 'English'}</span>
+            <svg aria-hidden="true" className={`h-4 w-4 transition-transform ${isLanguageMenuOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6" /></svg>
+          </button>
+          {isLanguageMenuOpen && (
+            <div className="absolute right-0 z-20 mt-2 w-44 overflow-hidden rounded-xl border border-neutral-charcoal/15 bg-white py-1 shadow-xl dark:border-white/15 dark:bg-slate-900" role="menu">
+              {[
+                ['pt-BR', '🇧🇷', 'Português'],
+                ['en-US', '🇺🇸', 'English'],
+              ].map(([value, flag, label]) => (
+                <button
+                  aria-checked={locale === value}
+                  className="flex w-full items-center gap-3 px-3 py-2.5 text-left text-sm font-medium text-neutral-darkCharcoal transition hover:bg-orange-50 dark:text-white dark:hover:bg-white/10"
+                  key={value}
+                  onClick={() => changeLocale(value)}
+                  role="menuitemradio"
+                  type="button"
+                >
+                  <span aria-hidden="true">{flag}</span>
+                  <span className="flex-1">{label}</span>
+                  {locale === value && <span aria-label="Selecionado" className="text-emerald-500">✓</span>}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <div className="prose prose-orange max-w-none text-neutral-charcoal dark:prose-invert dark:text-gray-300">
-        {document.sections.map(([title, paragraphs = [], items = [], contact]) => (
+        {policyDocument.sections.map(([title, paragraphs = [], items = [], contact]) => (
           <section key={title} className="mt-8">
             <h2 className="mb-4 text-xl font-semibold text-neutral-darkCharcoal dark:text-white">{title}</h2>
             {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
