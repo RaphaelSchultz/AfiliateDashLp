@@ -1,189 +1,96 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
+const STORAGE_KEY = 'privacy_policy_locale';
+
+const policy = {
+  'pt-BR': {
+    title: 'Política de Privacidade', updated: '5 de julho de 2026', language: 'Idioma da política',
+    sections: [
+      ['1. Quem somos', ['Esta Política descreve como o Afiliado Dash trata dados pessoais no site afiliadodash.com, no aplicativo app.afiliadodash.com e em serviços relacionados.', 'Para fins da LGPD, o Afiliado Dash atua como Controlador dos dados pessoais de conta e cobrança e, quando aplicável ao uso da plataforma para campanhas e integrações do cliente, pode atuar como Operador, conforme instruções do cliente e limites contratuais.', 'O canal oficial para dúvidas de privacidade, proteção de dados e identificação do responsável pelo tratamento é dpo@afiliadodash.com.']],
+      ['2. Escopo desta Política', ['Esta Política se aplica ao cadastro, autenticação e gerenciamento de conta; funcionalidades, integrações e automações; Meta Ads; Extensão do Chrome para Shopee Brasil e Mercado Livre; suporte, segurança, prevenção de fraudes e conformidade legal.'], ['Também pode abranger outras integrações autorizadas pelo usuário, como Instagram, Google e YouTube, conforme as permissões concedidas.']],
+      ['3. Dados que coletamos', ['Podemos tratar dados de cadastro, cobrança e assinatura, uso técnico e auditoria, dados enviados pelo usuário e tokens e metadados necessários para integrações autorizadas.'], ['Nome, e-mail, telefone/WhatsApp quando informado e credenciais de acesso;', 'Plano, status de pagamento e identificadores de transação;', 'Logs técnicos, IP, navegador, sistema operacional, eventos de uso e auditoria;', 'Dados de integrações autorizadas, incluindo perfil conectado, ativos, métricas e tokens necessários.', 'Não coletamos dados de fontes não autorizadas e não vendemos dados pessoais.']],
+      ['4. Integração com Meta Ads', ['Quando você conecta Meta Ads, usamos permissões autorizadas exclusivamente para análise e gerenciamento de anúncios dentro da plataforma.'], ['Identificação básica do perfil conectado e Páginas relacionadas aos ativos administrados;', 'Contas de anúncio, campanhas, conjuntos, anúncios, orçamento, status e métricas de desempenho;', 'Alterações manuais solicitadas por você, como ativar ou pausar campanhas e editar orçamento.']],
+      ['5. Limites de uso dos dados da Meta', ['O Afiliado Dash não publica conteúdo em Páginas, não envia mensagens, não cria campanhas automaticamente, não altera criativos e não executa ações de gerenciamento sem interação do usuário. Dados da Meta são usados apenas para sincronização, exibição de métricas, análise operacional e ações solicitadas manualmente.']],
+      ['6. Extensão do Chrome', ['A Extensão do Chrome trata dados somente para detectar produtos da Shopee Brasil e do Mercado Livre na aba ativa, gerar links de afiliado/shortlinks, salvar links na conta e enviar produtos para filas ou grupos de WhatsApp escolhidos por você.'], ['Identificador de usuário, nome, e-mail, avatar e token de sessão da extensão;', 'URL da aba ativa em páginas suportadas e dados exibidos do produto, como título, imagem, preço, vendedor, categoria, identificador e link original;', 'No fluxo Mercado Livre iniciado por você, cookies de sessão, inclusive ssid quando presente, token CSRF, etiqueta de rastreamento e horário de captura, para conectar sua própria conta de afiliado e gerar links;', 'Slug, SubIDs, links gerados, filas e grupos de WhatsApp escolhidos para envio.']],
+      ['7. Armazenamento e compartilhamento da extensão', ['A captura de cookies de sessão do Mercado Livre ocorre somente em página do Mercado Livre e após seu clique para gerar o token de autorização, com aviso prévio sobre os dados e sua finalidade.', 'Parte dos dados fica no armazenamento local do navegador. Dados necessários para gerar, salvar, validar e enviar links são transmitidos por HTTPS e podem ser armazenados pelo tempo necessário ao serviço, segurança, auditoria, suporte e obrigações legais.', 'Os dados podem ser compartilhados somente com a infraestrutura do Afiliado Dash, provedores de banco de dados e hospedagem, provedores de WhatsApp usados no envio solicitado e APIs das plataformas conectadas.']],
+      ['8. Finalidades e bases legais', ['Tratamos dados para executar contrato e serviços solicitados, administrar conta, cobrança, autenticação e suporte, garantir segurança, prevenir abuso, cumprir obrigações legais, melhorar a confiabilidade da plataforma e executar integrações autorizadas. As bases legais aplicáveis podem incluir execução de contrato, cumprimento de obrigação legal, exercício regular de direitos, legítimo interesse e consentimento quando aplicável.']],
+      ['9. Compartilhamento e subprocessadores', ['Podemos compartilhar dados com operadores e subprocessadores estritamente necessários, sob obrigações de segurança, confidencialidade e limitação de finalidade. As categorias incluem infraestrutura, banco de dados, mensageria, integrações, pagamentos, comunicação, autenticação, monitoramento e segurança operacional.']],
+      ['10. Transferência internacional', ['Alguns fornecedores podem processar dados fora do Brasil. Nesses casos, adotamos salvaguardas contratuais e técnicas adequadas, em linha com a LGPD.']],
+      ['11. Segurança da informação', ['Adotamos medidas técnicas e administrativas adequadas.'], ['Criptografia em trânsito por HTTPS/TLS e controles de acesso por permissão;', 'Registros de auditoria, monitoramento de segurança, autenticação e proteção de sessões;', 'Rotinas de backup, continuidade e resposta a incidentes.']],
+      ['12. Incidentes de segurança', ['Em caso de incidente de segurança com risco ou dano relevante aos titulares, adotaremos medidas de contenção, investigação e comunicação conforme os requisitos legais aplicáveis.']],
+      ['13. Retenção e exclusão', ['Mantemos dados pelo tempo necessário para finalidades legítimas, obrigações legais, defesa de direitos e execução contratual. Após o término da relação ou solicitação válida de exclusão, aplicamos eliminação, anonimização ou bloqueio, inclusive ciclos de expurgo de backups conforme janelas técnicas e exigências legais.']],
+      ['14. Direitos do titular', ['Nos termos da LGPD, você pode solicitar confirmação, acesso, correção, anonimização, bloqueio, eliminação, portabilidade, informação sobre compartilhamento e revogação de consentimento quando essa for a base legal aplicável. Você também pode peticionar perante a ANPD.']],
+      ['15. Como exercer seus direitos', ['Para solicitações LGPD, dúvidas de privacidade ou reporte de incidente relacionado a dados pessoais, entre em contato pelo canal oficial:'], [], 'dpo@afiliadodash.com'],
+      ['16. Alterações nesta Política', ['Esta Política pode ser atualizada periodicamente para refletir mudanças legais, operacionais e técnicas. Alterações relevantes serão comunicadas por meios razoáveis na plataforma e/ou canais de contato.']],
+    ],
+  },
+  'en-US': {
+    title: 'Privacy Policy', updated: 'July 5, 2026', language: 'Policy language',
+    sections: [
+      ['1. Who we are', ['This Policy explains how Afiliado Dash processes personal data on afiliadodash.com, the app at app.afiliadodash.com, and related services.', 'For LGPD purposes, Afiliado Dash acts as Controller for account and billing data and, where applicable, as Processor for customer campaigns and integrations under customer instructions and contractual limits.', 'Our official privacy and data-protection channel is dpo@afiliadodash.com.']],
+      ['2. Scope', ['This Policy covers account registration and authentication; product features, integrations and automations; Meta Ads; the Chrome Extension for Shopee Brazil and Mercado Livre; support, security, fraud prevention and legal compliance.'], ['It can also cover other user-authorized integrations, such as Instagram, Google, and YouTube, according to granted permissions.']],
+      ['3. Data we collect', ['We may process registration, billing, subscription, technical-log, audit, user-submitted, and authorized-integration data.'], ['Name, email, phone/WhatsApp when provided, and access credentials;', 'Plan, payment status, and transaction identifiers;', 'Technical logs, IP address, browser, operating system, usage and audit events;', 'Authorized integration data, including connected profiles, assets, metrics, tokens, and metadata needed for the integration.', 'We do not collect data from unauthorized sources and do not sell personal data.']],
+      ['4. Meta Ads integration', ['When you connect Meta Ads, granted permissions are used exclusively for advertising analytics and management features.'], ['Basic connected-profile identification and Pages related to managed advertising assets;', 'Ad accounts, campaigns, ad sets, ads, budget, status, and performance metrics;', 'Manual changes requested by you, such as enabling, pausing, or editing budgets.']],
+      ['5. Limits on Meta data use', ['Afiliado Dash does not publish to Pages, send messages, create campaigns automatically, modify creatives, or perform management actions without user interaction. Meta data is used only for synchronization, metrics, operational analysis, and actions manually requested by the user.']],
+      ['6. Chrome Extension', ['The Chrome Extension processes data only to detect Shopee Brazil and Mercado Livre products in the active tab, generate affiliate links/shortlinks, save links to the account, and send products to WhatsApp queues or groups selected by you.'], ['Connected-account data and extension session token;', 'Supported active-tab URLs and displayed product information;', 'In the user-initiated Mercado Livre flow, session cookies including ssid when present, CSRF token, tracking tag, and capture time, to connect the user’s own affiliate account and generate links;', 'Slug, SubIDs, generated links, queues, and WhatsApp groups selected for sending.']],
+      ['7. Extension storage and sharing', ['Mercado Livre session-cookie capture happens only on a Mercado Livre page and after you click to generate the authorization token, following prior disclosure. Some data remains in local extension storage. Data needed to generate, save, validate, and send links is transmitted over HTTPS and retained as needed for service provision, security, auditing, support, and legal obligations.', 'Data may be shared only with Afiliado Dash infrastructure, database and hosting providers, WhatsApp providers used for requested sends, and connected-platform APIs.']],
+      ['8. Purposes and legal bases', ['We process data to perform contracts and requested services; manage accounts, billing, authentication, and support; ensure security and legal compliance; improve reliability; and operate authorized integrations. Applicable legal bases may include contract performance, legal obligation, exercise of rights, legitimate interest, and consent where applicable.']],
+      ['9. Sharing and subprocessors', ['Data may be shared with strictly necessary operators and subprocessors under security, confidentiality, and purpose-limitation obligations. Categories include infrastructure, databases, messaging, integrations, payments, communication, authentication, monitoring, and operational security.']],
+      ['10. International transfers', ['Some providers may process data outside Brazil. In those cases, appropriate contractual and technical safeguards are adopted in line with the LGPD.']],
+      ['11. Information security', ['We adopt appropriate technical and administrative measures.'], ['HTTPS/TLS encryption in transit and permission-based access controls;', 'Audit logs, security monitoring, authentication, and session protection;', 'Backup, continuity, and incident-response routines.']],
+      ['12. Security incidents', ['For security incidents that create relevant risk or harm to data subjects, we take containment, investigation, and communication measures according to applicable legal requirements.']],
+      ['13. Retention and deletion', ['Data is retained for legitimate purposes, legal obligations, defense of rights, and contract performance. After termination or a valid deletion request, we apply deletion, anonymization, or blocking procedures, including backup purge cycles according to technical windows and legal requirements.']],
+      ['14. Data subject rights', ['Under the LGPD, you may request confirmation, access, correction, anonymization, blocking, deletion, portability, information about sharing, and withdrawal of consent when consent is the applicable legal basis. You may also petition the ANPD.']],
+      ['15. How to exercise your rights', ['For LGPD requests, privacy questions, or reports of incidents involving personal data, contact our official channel:'], [], 'dpo@afiliadodash.com'],
+      ['16. Changes to this Policy', ['This Policy may be updated to reflect legal, operational, and technical changes. Relevant changes will be communicated through reasonable means in the platform and/or contact channels.']],
+    ],
+  },
+};
+
+const normalizeLocale = (value) => ['en', 'en-us'].includes(value?.toLowerCase()) ? 'en-US' : ['pt', 'pt-br'].includes(value?.toLowerCase()) ? 'pt-BR' : null;
 
 const PrivacyPolicy = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [locale, setLocale] = useState(() => normalizeLocale(searchParams.get('lang')) || normalizeLocale(localStorage.getItem(STORAGE_KEY)) || 'pt-BR');
+  const document = policy[locale];
+
+  useEffect(() => {
+    const requested = normalizeLocale(searchParams.get('lang'));
+    if (requested && requested !== locale) setLocale(requested);
+  }, [locale, searchParams]);
+
+  const changeLocale = (nextLocale) => {
+    setLocale(nextLocale);
+    localStorage.setItem(STORAGE_KEY, nextLocale);
+    const params = new URLSearchParams(searchParams);
+    params.set('lang', nextLocale === 'en-US' ? 'en' : 'pt-BR');
+    setSearchParams(params, { replace: true });
+  };
+
   return (
-    <div className="max-w-4xl mx-auto px-6 pt-32 pb-20">
-      <h1 className="text-3xl font-bold text-neutral-darkCharcoal dark:text-white mb-2">Política de Privacidade</h1>
-      <p className="text-sm text-neutral-charcoal/70 dark:text-gray-400 mb-8">Afiliado Dash · Última atualização: 20 de abril de 2026</p>
-
-      <div className="prose dark:prose-invert prose-orange max-w-none text-neutral-charcoal dark:text-gray-300">
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">1. Quem somos e escopo desta Política</h2>
-        <p>
-          Esta Política de Privacidade descreve como o Afiliado Dash trata dados pessoais no site afiliadodash.com, no aplicativo
-          app.afiliadodash.com e em serviços relacionados.
-        </p>
-        <p>
-          Para fins da Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 - LGPD), o Afiliado Dash atua como Controlador dos
-          dados de conta, cadastro, cobrança e relacionamento com usuários da plataforma. Em cenários específicos de tratamento em nome
-          de clientes, pode atuar como Operador, conforme instruções legítimas e limites contratuais.
-        </p>
-        <p>
-          Esta Política se aplica ao tratamento realizado no contexto de cadastro, autenticação, uso de funcionalidades, integrações,
-          automações, suporte técnico, segurança, prevenção a fraudes e conformidade legal.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">2. Disponibilização e atualizações da Política</h2>
-        <p>
-          Esta Política é disponibilizada em página própria e pode ser atualizada sempre que houver mudanças relevantes nas práticas de
-          tratamento de dados, incluindo alterações relacionadas ao uso de integrações com plataformas terceiras.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">3. Veracidade das informações</h2>
-        <p>
-          As informações fornecidas pelo usuário devem ser verdadeiras, completas e atualizadas. Caso sejam identificadas informações
-          inverídicas, o Afiliado Dash poderá adotar medidas cabíveis, inclusive restrição ou encerramento de conta, conforme os Termos
-          de Uso e a legislação aplicável.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">4. O que são dados pessoais e dados sensíveis</h2>
-        <p>
-          Dados pessoais são informações relacionadas a pessoa natural identificada ou identificável. Dados pessoais sensíveis incluem,
-          entre outros, dados sobre origem racial ou étnica, convicção religiosa, opinião política, filiação sindical, saúde, vida
-          sexual, dado genético ou biométrico, conforme a LGPD.
-        </p>
-        <p>
-          Em regra, o Afiliado Dash não exige dados pessoais sensíveis para uso dos serviços. Se houver tratamento desse tipo de dado em
-          situações específicas, isso ocorrerá nos termos da legislação aplicável.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">5. Quais dados coletamos</h2>
-        <p>Podemos tratar os seguintes tipos de dados:</p>
-        <ul className="space-y-2 list-disc pl-5 text-neutral-charcoal dark:text-gray-300">
-          <li>Dados cadastrais: nome, e-mail, telefone/WhatsApp (quando informado), preferências e informações de perfil.</li>
-          <li>Dados de autenticação e segurança: credenciais, sessões, registros de login e eventos de segurança.</li>
-          <li>Dados de cobrança e assinatura: plano, status, identificadores de transação e dados necessários ao faturamento.</li>
-          <li>Dados de uso e telemetria: IP, navegador, sistema operacional, identificadores técnicos, logs e trilhas de auditoria.</li>
-          <li>Dados de conteúdo e operação: informações inseridas pelo usuário para uso das funcionalidades contratadas.</li>
-          <li>Dados de integrações: tokens, chaves e metadados necessários para conectar e operar integrações autorizadas.</li>
-        </ul>
-
-        <h3 className="text-lg font-semibold text-neutral-darkCharcoal dark:text-white mt-6 mb-3">5.1 Dados de integrações com Instagram</h3>
-        <p>
-          Quando o usuário conecta contas via Instagram Graph API, podemos tratar dados do perfil, publicações, métricas, insights e
-          tokens necessários para manter a conexão, sempre conforme permissões concedidas pelo próprio usuário.
-        </p>
-
-        <h3 className="text-lg font-semibold text-neutral-darkCharcoal dark:text-white mt-6 mb-3">5.2 Dados de integrações com Google e YouTube</h3>
-        <p>
-          Quando o usuário conecta contas via APIs Google (incluindo YouTube), podemos tratar dados básicos de perfil, dados de canal,
-          vídeos, métricas agregadas e tokens de acesso/renovação, conforme escopos autorizados.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">6. Finalidades e bases legais do tratamento</h2>
-        <p>Tratamos dados pessoais para:</p>
-        <ul className="space-y-2 list-disc pl-5 text-neutral-charcoal dark:text-gray-300">
-          <li>Viabilizar acesso, autenticação e uso da plataforma.</li>
-          <li>Executar funcionalidades contratadas, integrações, publicações, análises e automações.</li>
-          <li>Gerenciar conta, assinatura, cobrança, suporte e relacionamento com o usuário.</li>
-          <li>Garantir segurança, estabilidade, prevenção de fraudes e continuidade do serviço.</li>
-          <li>Melhorar desempenho, qualidade e confiabilidade da plataforma.</li>
-          <li>Cumprir obrigações legais, regulatórias e exercer direitos em processos.</li>
-        </ul>
-        <p>As bases legais aplicáveis podem incluir:</p>
-        <ul className="space-y-2 list-disc pl-5 text-neutral-charcoal dark:text-gray-300">
-          <li>Execução de contrato e procedimentos preliminares.</li>
-          <li>Consentimento, quando exigido (inclusive em autorizações OAuth de plataformas terceiras).</li>
-          <li>Cumprimento de obrigação legal ou regulatória.</li>
-          <li>Exercício regular de direitos.</li>
-          <li>Legítimo interesse, quando cabível e proporcional.</li>
-        </ul>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">7. Uso permitido de dados de integrações</h2>
-        <p>
-          Dados obtidos de integrações com plataformas terceiras são usados exclusivamente para fornecer, manter e melhorar
-          funcionalidades relacionadas à própria integração, em benefício do usuário.
-        </p>
-        <p>O Afiliado Dash não vende dados pessoais.</p>
-        <p>Também não utiliza esses dados para:</p>
-        <ul className="space-y-2 list-disc pl-5 text-neutral-charcoal dark:text-gray-300">
-          <li>Publicidade direcionada, retargeting ou criação de perfis para marketing de terceiros.</li>
-          <li>Comercialização para corretores de dados ou revendedores de informação.</li>
-          <li>Análise de crédito ou finalidade desconectada da prestação do serviço.</li>
-          <li>Treinamento de modelos genéricos de IA com dados obtidos via APIs de plataformas terceiras.</li>
-        </ul>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">8. Compartilhamento de dados</h2>
-        <p>Podemos compartilhar dados quando necessário com:</p>
-        <ul className="space-y-2 list-disc pl-5 text-neutral-charcoal dark:text-gray-300">
-          <li>Provedores de infraestrutura, banco de dados, hospedagem, monitoramento e mensageria.</li>
-          <li>Processadores de pagamento, serviços antifraude e faturamento.</li>
-          <li>Ferramentas de analytics, preferencialmente com dados agregados, anonimizados ou pseudonimizados.</li>
-          <li>Fornecedores de IA para execução de funcionalidades solicitadas pelo usuário, com minimização de dados.</li>
-          <li>Parceiros de suporte, manutenção e desenvolvimento que atuem sob confidencialidade.</li>
-          <li>Autoridades públicas, quando houver obrigação legal.</li>
-        </ul>
-        <p>
-          Os terceiros relevantes são contratualmente obrigados a adotar medidas de segurança, confidencialidade e limitação de
-          finalidade.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">9. Armazenamento e transferência internacional</h2>
-        <p>
-          O Afiliado Dash pode utilizar provedores que processam dados fora do Brasil. Nesses casos, adota salvaguardas contratuais,
-          técnicas e organizacionais adequadas, nos termos da LGPD.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">10. Segurança da informação</h2>
-        <p>Adotamos medidas técnicas e administrativas apropriadas, incluindo:</p>
-        <ul className="space-y-2 list-disc pl-5 text-neutral-charcoal dark:text-gray-300">
-          <li>Criptografia em trânsito (HTTPS/TLS).</li>
-          <li>Controles de acesso por perfil, necessidade e privilégio mínimo.</li>
-          <li>Proteção e rotação de tokens de integração, quando aplicável.</li>
-          <li>Logs de segurança, trilhas de auditoria e monitoramento operacional.</li>
-          <li>Backups e procedimentos de continuidade.</li>
-          <li>Planos de resposta a incidentes.</li>
-        </ul>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">11. Processamento automático e IA</h2>
-        <p>
-          Podemos usar dados e instruções fornecidas pelo usuário para recomendar conteúdos, recursos, estratégias de publicação e gerar
-          sugestões por IA, sempre para suporte às funcionalidades do serviço e sob responsabilidade de revisão do usuário antes da
-          publicação.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">12. Retenção e exclusão de dados</h2>
-        <p>
-          Os dados são mantidos pelo tempo necessário para cumprir as finalidades desta Política e obrigações legais. Após esse período,
-          realizamos eliminação, anonimização ou bloqueio, inclusive com ciclos técnicos de expurgo em backups quando aplicável.
-        </p>
-        <p>
-          Ao desconectar integrações (como Google/YouTube ou Instagram) ou revogar permissões nas plataformas de origem, o Afiliado Dash
-          deixa de acessar novos dados e envida esforços razoáveis para excluir ou anonimizar dados vinculados, observadas exigências
-          legais e de auditoria.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">13. Direitos do titular</h2>
-        <p>Nos termos da LGPD, o titular pode solicitar:</p>
-        <ul className="space-y-2 list-disc pl-5 text-neutral-charcoal dark:text-gray-300">
-          <li>Confirmação da existência de tratamento.</li>
-          <li>Acesso aos dados pessoais.</li>
-          <li>Correção de dados incompletos, inexatos ou desatualizados.</li>
-          <li>Anonimização, bloqueio ou eliminação, quando cabível.</li>
-          <li>Portabilidade, quando aplicável.</li>
-          <li>Informação sobre compartilhamentos.</li>
-          <li>Informação sobre a possibilidade de não consentir e suas consequências, quando aplicável.</li>
-          <li>Revogação do consentimento, quando essa for a base legal.</li>
-        </ul>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">14. Como exercer seus direitos</h2>
-        <p>
-          Solicitações relacionadas a privacidade e proteção de dados podem ser enviadas para dpo@afiliadodash.com. Para proteger os
-          dados do titular e prevenir fraudes, podemos solicitar confirmação de identidade antes de atender à solicitação.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">15. Incidentes de segurança</h2>
-        <p>
-          Em caso de incidente com risco ou dano relevante, adotaremos medidas de contenção, investigação e comunicação conforme exigido
-          pela legislação aplicável.
-        </p>
-
-        <h2 className="text-xl font-semibold text-neutral-darkCharcoal dark:text-white mt-8 mb-4">16. Alterações desta Política</h2>
-        <p>
-          Esta Política pode ser atualizada periodicamente. Alterações relevantes serão comunicadas por meios razoáveis na plataforma,
-          incluindo avisos no aplicativo e/ou contato por e-mail.
-        </p>
+    <main className="max-w-4xl mx-auto px-6 pt-32 pb-20">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-neutral-darkCharcoal dark:text-white mb-2">{document.title}</h1>
+          <p className="text-sm text-neutral-charcoal/70 dark:text-gray-400">Afiliado Dash · {locale === 'pt-BR' ? 'Última atualização' : 'Last updated'}: {document.updated}</p>
+        </div>
+        <div aria-label={document.language} role="group" className="inline-flex w-fit rounded-lg border border-neutral-charcoal/15 bg-white/70 p-1 dark:border-white/15 dark:bg-white/5">
+          <button aria-pressed={locale === 'pt-BR'} onClick={() => changeLocale('pt-BR')} className={`rounded-md px-3 py-1.5 text-sm font-medium ${locale === 'pt-BR' ? 'bg-orange-500 text-white' : 'text-neutral-charcoal dark:text-gray-200'}`}>Português</button>
+          <button aria-pressed={locale === 'en-US'} onClick={() => changeLocale('en-US')} className={`rounded-md px-3 py-1.5 text-sm font-medium ${locale === 'en-US' ? 'bg-orange-500 text-white' : 'text-neutral-charcoal dark:text-gray-200'}`}>English</button>
+        </div>
       </div>
-    </div>
+      <div className="prose prose-orange max-w-none text-neutral-charcoal dark:prose-invert dark:text-gray-300">
+        {document.sections.map(([title, paragraphs = [], items = [], contact]) => (
+          <section key={title} className="mt-8">
+            <h2 className="mb-4 text-xl font-semibold text-neutral-darkCharcoal dark:text-white">{title}</h2>
+            {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            {items.length > 0 && <ul className="space-y-2 list-disc pl-5">{items.map((item) => <li key={item}>{item}</li>)}</ul>}
+            {contact && <a className="font-medium text-orange-600 hover:underline dark:text-orange-400" href={`mailto:${contact}`}>{contact}</a>}
+          </section>
+        ))}
+      </div>
+    </main>
   );
 };
 
