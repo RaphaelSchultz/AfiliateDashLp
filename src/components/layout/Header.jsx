@@ -1,132 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import ThemeToggle from '../ui/ThemeToggle';
+import { landingRoutes, siteLinks } from '../redesign/siteLinks';
 
-const Header = ({ scrollToOffer, showSignupCtas = true }) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const logoHref = location.pathname === '/pv2' ? '/pv2' : '/';
-
+export default function Header() {
+  const { pathname } = useLocation();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(window.scrollY > 12);
+  const toggle = useRef(null);
+  const ref = useRef(null);
+  const base = landingRoutes.includes(pathname) ? '' : '/';
+  const links = [['problema', 'Por que'], ['como-funciona', 'Como funciona'], ['funcionalidades', 'Funcionalidades'], ['planos', 'Planos'], ['faq', 'FAQ']];
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const scroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener('scroll', scroll, { passive: true });
+    return () => window.removeEventListener('scroll', scroll);
   }, []);
-
-  const handleGoHome = () => {
-    if (location.pathname !== '/') {
-      navigate('/');
-      return;
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const navLinks = [
-    { label: 'Início', action: handleGoHome },
-    { label: 'Funcionalidades', action: () => document.getElementById('funcionalidades')?.scrollIntoView({ behavior: 'smooth' }) },
-    { label: 'Planos', action: scrollToOffer },
-    { label: 'FAQ', action: () => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }) },
-  ];
-
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/80 backdrop-blur-xl shadow-[0_1px_20px_rgba(0,0,0,0.06)]'
-          : 'bg-white/60 backdrop-blur-lg'
-      }`}
-    >
-      <div className="max-w-[1054px] mx-auto px-5 flex items-center justify-between h-[75px]">
-        {/* Logo */}
-        <Link to={logoHref} className="flex items-center gap-2 shrink-0">
-          <img
-            src="https://app.afiliadodash.com/assets/logo-BN3UZtY6.png"
-            alt="AfiliadoDash"
-            className="h-8 w-auto"
-            onError={(e) => {
-              e.target.style.display = 'none';
-            }}
-          />
-          <span className="text-[18px] font-black tracking-tight text-slate-900">
-            Afiliado<span className="text-orange-500">Dash</span>
-          </span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <button
-              key={link.label}
-              onClick={link.action}
-              className="text-[15px] font-semibold text-slate-600 hover:text-orange-500 transition-colors duration-200"
-            >
-              {link.label}
-            </button>
-          ))}
-        </nav>
-
-        {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-3">
-          <a
-            href="https://app.afiliadodash.com/login"
-            className="text-[14px] font-semibold text-slate-600 hover:text-orange-500 transition-colors"
-          >
-            Entrar
-          </a>
-          {showSignupCtas && (
-            <button
-              onClick={scrollToOffer}
-              className="px-5 py-2.5 text-[14px] font-bold text-white bg-orange-500 hover:bg-orange-600 rounded-[10px] shadow-[0_4px_14px_rgba(249,115,22,0.30)] hover:-translate-y-0.5 transition-all duration-200"
-            >
-              Começar agora
-            </button>
-          )}
-        </div>
-
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-slate-700 p-1"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Menu"
-        >
-          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100 px-5 py-4 flex flex-col gap-1">
-          {navLinks.map((link) => (
-            <button
-              key={link.label}
-              onClick={() => { link.action(); setIsMobileMenuOpen(false); }}
-              className="w-full text-left py-3 text-[15px] font-semibold text-slate-700 hover:text-orange-500 transition-colors border-b border-slate-50 last:border-0"
-            >
-              {link.label}
-            </button>
-          ))}
-          <div className="pt-3 flex flex-col gap-2">
-            <a
-              href="https://app.afiliadodash.com/login"
-              className="text-center py-3 text-[14px] font-semibold text-slate-700"
-            >
-              Entrar
-            </a>
-            {showSignupCtas && (
-              <button
-                onClick={() => { scrollToOffer(); setIsMobileMenuOpen(false); }}
-                className="py-3 text-[14px] font-bold text-white bg-orange-500 rounded-[10px]"
-              >
-                Começar agora
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-    </header>
-  );
-};
-
-export default Header;
+  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const dismiss = event => {
+      if (event.key === 'Escape') { setOpen(false); toggle.current?.focus(); }
+      if (event.type === 'pointerdown' && !ref.current?.contains(event.target)) setOpen(false);
+    };
+    document.addEventListener('keydown', dismiss);
+    document.addEventListener('pointerdown', dismiss);
+    return () => { document.removeEventListener('keydown', dismiss); document.removeEventListener('pointerdown', dismiss); };
+  }, [open]);
+  return <header className={`nav${scrolled || open ? ' scrolled' : ''}`} ref={ref}>
+    <div className="wrap">
+      <Link to={pathname === '/pv2' ? '/pv2' : '/'} className="logo" aria-label="Afiliado Dash — início"><img src="/images/redesign/logo.png" alt="" width="30" height="30" /><span>Afiliado <b>Dash</b></span></Link>
+      <nav className="nav-links" aria-label="Principal">{links.map(([id, label]) => <Link key={id} to={`${base}#${id}`}>{label}</Link>)}</nav>
+      <div className="nav-cta"><ThemeToggle /><a href={siteLinks.login}>Entrar</a><Link to={`${base}#planos`} className="btn btn-dark">Criar conta</Link><button className="menu-toggle" ref={toggle} aria-label={open ? 'Fechar menu' : 'Abrir menu'} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(value => !value)}>{open ? <X size={20} /> : <Menu size={20} />}</button></div>
+    </div>
+    {open && <nav className="mobile-menu" id="mobile-menu" aria-label="Menu móvel">{links.map(([id, label]) => <Link key={id} to={`${base}#${id}`} onClick={() => setOpen(false)}>{label}</Link>)}<a href={siteLinks.login}>Entrar na minha conta</a></nav>}
+  </header>;
+}

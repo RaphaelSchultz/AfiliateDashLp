@@ -31,9 +31,9 @@ export default function App() {
             <Route path="obrigado" element={<ThankYou />} />
             <Route path="terms" element={<TermsOfUse />} />
             <Route path="privacy" element={<PrivacyPolicy />} />
+            <Route path="lp-newversion" element={<LpNewVersion />} />
+            <Route path="lp-newversion-2" element={<LpNewVersion2 />} />
           </Route>
-          <Route path="/lp-newversion" element={<LpNewVersion />} />
-          <Route path="/lp-newversion-2" element={<LpNewVersion2 />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

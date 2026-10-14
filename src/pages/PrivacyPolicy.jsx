@@ -52,7 +52,12 @@ const normalizeLocale = (value) => ['en', 'en-us'].includes(value?.toLowerCase()
 
 const PrivacyPolicy = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [locale, setLocale] = useState(() => normalizeLocale(searchParams.get('lang')) || normalizeLocale(localStorage.getItem(STORAGE_KEY)) || 'pt-BR');
+  const [locale, setLocale] = useState(() => {
+    const requested = normalizeLocale(searchParams.get('lang'));
+    if (requested) return requested;
+    try { return normalizeLocale(localStorage.getItem(STORAGE_KEY)) || 'pt-BR'; }
+    catch { return 'pt-BR'; }
+  });
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const languageMenuRef = useRef(null);
   const policyDocument = policy[locale];
@@ -72,7 +77,7 @@ const PrivacyPolicy = () => {
 
   const changeLocale = (nextLocale) => {
     setLocale(nextLocale);
-    localStorage.setItem(STORAGE_KEY, nextLocale);
+    try { localStorage.setItem(STORAGE_KEY, nextLocale); } catch { /* Keep the selected language usable without storage. */ }
     const params = new URLSearchParams(searchParams);
     params.set('lang', nextLocale === 'en-US' ? 'en' : 'pt-BR');
     setSearchParams(params, { replace: true });
@@ -80,18 +85,32 @@ const PrivacyPolicy = () => {
   };
 
   return (
-    <main className="max-w-4xl mx-auto px-6 pt-32 pb-20">
+    <article className="legal-page wrap" lang={locale}>
+      <a href="/" className="back-link">{locale === "pt-BR" ? "← Voltar ao início" : "← Back to home"}</a>
+      <div className="eyebrow">{locale === "pt-BR" ? "Seus dados, seus direitos" : "Your data, your rights"}</div>
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-neutral-darkCharcoal dark:text-white mb-2">{policyDocument.title}</h1>
-          <p className="text-sm text-neutral-charcoal/70 dark:text-gray-400">Afiliado Dash · {locale === 'pt-BR' ? 'Última atualização' : 'Last updated'}: {policyDocument.updated}</p>
+          <h1 className="text-3xl font-bold text-neutral-darkCharcoal mb-2">{policyDocument.title}</h1>
+          <p className="text-sm text-neutral-charcoal/70">Afiliado Dash · {locale === 'pt-BR' ? 'Última atualização' : 'Last updated'}: {policyDocument.updated}</p>
         </div>
-        <div ref={languageMenuRef} className="relative w-fit">
+        <div ref={languageMenuRef} className="relative w-fit" onKeyDown={(event) => {
+          if (event.key === 'Escape') {
+            setIsLanguageMenuOpen(false);
+            languageMenuRef.current?.querySelector('button')?.focus();
+          }
+          if (isLanguageMenuOpen && ['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
+            event.preventDefault();
+            const items = [...languageMenuRef.current.querySelectorAll('[role="menuitemradio"]')];
+            const current = items.indexOf(document.activeElement);
+            const next = event.key === 'Home' ? 0 : event.key === 'End' ? items.length - 1 : (current + (event.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+            items[next]?.focus();
+          }
+        }}>
           <button
             aria-expanded={isLanguageMenuOpen}
             aria-haspopup="menu"
             aria-label={policyDocument.language}
-            className="inline-flex h-10 items-center gap-2 rounded-xl border border-neutral-charcoal/15 bg-white px-3 text-sm font-medium text-neutral-darkCharcoal shadow-sm transition hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-orange-500/40 dark:border-white/15 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
+            className="language-toggle inline-flex h-10 items-center gap-2 rounded-xl border px-3 text-sm font-medium shadow-sm transition"
             onClick={() => setIsLanguageMenuOpen((open) => !open)}
             type="button"
           >
@@ -100,14 +119,14 @@ const PrivacyPolicy = () => {
             <svg aria-hidden="true" className={`h-4 w-4 transition-transform ${isLanguageMenuOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6" /></svg>
           </button>
           {isLanguageMenuOpen && (
-            <div className="absolute right-0 z-20 mt-2 w-44 overflow-hidden rounded-xl border border-neutral-charcoal/15 bg-white py-1 shadow-xl dark:border-white/15 dark:bg-slate-900" role="menu">
+            <div className="language-options absolute left-0 sm:left-auto sm:right-0 z-20 mt-2 w-44 overflow-hidden rounded-xl border py-1 shadow-xl" role="menu">
               {[
                 ['pt-BR', '🇧🇷', 'Português'],
                 ['en-US', '🇺🇸', 'English'],
               ].map(([value, flag, label]) => (
                 <button
                   aria-checked={locale === value}
-                  className="flex w-full items-center gap-3 px-3 py-2.5 text-left text-sm font-medium text-neutral-darkCharcoal transition hover:bg-orange-50 dark:text-white dark:hover:bg-white/10"
+                  className="flex w-full items-center gap-3 px-3 py-2.5 text-left text-sm font-medium transition"
                   key={value}
                   onClick={() => changeLocale(value)}
                   role="menuitemradio"
@@ -122,17 +141,17 @@ const PrivacyPolicy = () => {
           )}
         </div>
       </div>
-      <div className="prose prose-orange max-w-none text-neutral-charcoal dark:prose-invert dark:text-gray-300">
+      <div className="prose prose-orange max-w-none text-neutral-charcoal">
         {policyDocument.sections.map(([title, paragraphs = [], items = [], contact]) => (
           <section key={title} className="mt-8">
-            <h2 className="mb-4 text-xl font-semibold text-neutral-darkCharcoal dark:text-white">{title}</h2>
+            <h2 className="mb-4 text-xl font-semibold text-neutral-darkCharcoal">{title}</h2>
             {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             {items.length > 0 && <ul className="space-y-2 list-disc pl-5">{items.map((item) => <li key={item}>{item}</li>)}</ul>}
-            {contact && <a className="font-medium text-orange-600 hover:underline dark:text-orange-400" href={`mailto:${contact}`}>{contact}</a>}
+            {contact && <a className="font-medium text-orange-600 hover:underline" href={`mailto:${contact}`}>{contact}</a>}
           </section>
         ))}
       </div>
-    </main>
+    </article>
   );
 };
 
