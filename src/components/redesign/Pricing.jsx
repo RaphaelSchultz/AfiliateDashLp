@@ -1,8 +1,6 @@
-import { useLocation } from 'react-router-dom';
 import { plans } from '../pricing/plansData';
 
 export default function Pricing() {
-  const { pathname } = useLocation();
   return (
 <section className="sec sec-line" id="planos">
   <div className="wrap">
@@ -17,7 +15,7 @@ export default function Pricing() {
         <div className="for">Para quem está começando a escalar</div>
         <div className="price"><span className="cur">R$</span><span className="n">97</span><span className="per">,00/mês</span></div>
         <div className="day">≈ R$ 3,23 por dia</div>
-        <a href={pathname === "/pv2" ? plans[0].pv2CtaHref : plans[0].ctaHref} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Assinar Start</a>
+        <a href={plans[0].ctaHref} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Assinar Start</a>
         <div className="base">Inclui:</div>
         <ul>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Dashboard Completo</li>
@@ -39,7 +37,7 @@ export default function Pricing() {
         <div className="for">Para quem já roda anúncios e grupos</div>
         <div className="price"><span className="cur">R$</span><span className="n">147</span><span className="per">,00/mês</span></div>
         <div className="day">≈ R$ 4,90 por dia</div>
-        <a href={pathname === "/pv2" ? plans[1].pv2CtaHref : plans[1].ctaHref} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Assinar Light</a>
+        <a href={plans[1].ctaHref} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Assinar Light</a>
         <div className="base">Tudo do Start, mais:</div>
         <ul>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>30 Links de redirecionamento</li>
@@ -56,7 +54,7 @@ export default function Pricing() {
         <div className="for">Para operações com várias contas de anúncio</div>
         <div className="price"><span className="cur">R$</span><span className="n">247</span><span className="per">,00/mês</span></div>
         <div className="day">≈ R$ 8,23 por dia · tracker incluso</div>
-        <a href={pathname === "/pv2" ? plans[2].pv2CtaHref : plans[2].ctaHref} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Assinar Plus</a>
+        <a href={plans[2].ctaHref} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Assinar Plus</a>
         <div className="base">Tudo do Light, mais:</div>
         <ul>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>50 Links de redirecionamento</li>
@@ -73,7 +71,7 @@ export default function Pricing() {
         <div className="for">Para operações sem limite</div>
         <div className="price"><span className="cur">R$</span><span className="n">447</span><span className="per">,00/mês</span></div>
         <div className="day">≈ R$ 14,90 por dia · links e grupos ilimitados</div>
-        <a href={pathname === "/pv2" ? plans[3].pv2CtaHref : plans[3].ctaHref} target="_blank" rel="noopener noreferrer" className="btn btn-dark">Assinar Max</a>
+        <a href={plans[3].ctaHref} target="_blank" rel="noopener noreferrer" className="btn btn-dark">Assinar Max</a>
         <div className="base">Tudo do Plus, mais:</div>
         <ul>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Links de redirecionamento ilimitados</li>
